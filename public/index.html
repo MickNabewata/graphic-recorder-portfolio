@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-121670955-4"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-121670955-4');
+    </script>
+
+    <!-- ファビコン -->
+    <link rel="shortcut apple-touch-icon" type="image/png" href="%PUBLIC_URL%/apple-touch-icon.png">
+    <link rel="shortcut icon" type="image/png" href="%PUBLIC_URL%/icon.png">
+
+    <!-- Material-UIで必要なRobot Font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
+
+    <!-- 自前で利用するWebフォント -->
+    <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400i" rel="stylesheet">
+    
+    <!--
+      モバイルブラウザ用の指定
+      参考：https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <meta name="theme-color" content="#000000" />
+
+    <!-- Twitter -->
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+    <!-- ページ説明 -->
+    <meta name="description" content="グラフィックレコーディングをメインに活動している永井結子のポートフォリオサイトです。">
+    <meta name="keywords" content="グラフィックレコーダー,グラフィックレコーディング,グラレコ,Graphic Recorder,Graphic Recording">
+    <meta property="og:title" content="Yuiko's Portfolio">
+    <meta property="og:description" content="グラフィックレコーダーをメインに活動している永井結子のポートフォリオサイトです。">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://sporoom.micknabewata.com/ogImage.png">
+    <meta property="og:site_name" content="Yuiko's Portfolio">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@MNabewata">
+    <meta name="twitter:title" content="Yuiko's Portfolio">
+    <meta name="twitter:description" content="グラフィックレコーダーをメインに活動している永井結子のポートフォリオサイトです。">
+    <meta name="twitter:image" content="https://sporoom.micknabewata.com/ogImage.png">
+
+    <link rel="stylesheet" type="text/css" charset="UTF-8" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css" />
+
+    <!-- ページタイトル -->
+    <title>Yuiko's Portfolio</title>
+  </head>
+  <body>
+    <noscript>このアプリケーションを実行するには、ブラウザでJavaScriptが有効になっている必要があります。</noscript>
+    <div id="root"></div>
+  </body>
+</html>
