@@ -152,7 +152,6 @@ class DrawerLayout extends React.Component<Prop, State> {
       <div className={this.props.classes.root}>
         <AppBar position='fixed' className={this.props.classes.appBar}>
           <Toolbar>
-            {/* このアイコンボタンはmenuButtonクラスでのスタイル指定により画面幅が狭い場合にしか表示されない */}
             <IconButton
               color='inherit'
               aria-label='Open drawer'
@@ -163,41 +162,22 @@ class DrawerLayout extends React.Component<Prop, State> {
             </IconButton>
             {/* タイトル文言 */}
             <Typography color='inherit' className={this.props.classes.title} noWrap>
-              鍋綿のSharePoint部屋
+              Yuiko's Portfolio
             </Typography>
           </Toolbar>
         </AppBar>
         <nav className={this.props.classes.drawer}>
-          {/* 
-            画面幅が狭い場合に表示するDrawer
-          */}
-          <Hidden mdUp implementation='css'>
-            <Drawer
-              variant='temporary'
-              anchor='left'
-              open={this.state.mobileOpen}
-              onClose={this.handleDrawerToggle}
-              classes={{
-                paper: this.props.classes.drawerPaper,
-              }}
-            >
-              {drawer}
-            </Drawer>
-          </Hidden>
-          {/* 
-            画面幅が広い場合に表示するDrawer
-          */}
-          <Hidden smDown implementation='css'>
-            <div>
-              <Drawer
-                classes={{paper: this.props.classes.drawerPaper}}
-                variant='permanent'
-                open
-              >
-                {drawer}
-              </Drawer>
-            </div>
-          </Hidden>
+          <Drawer
+            variant='persistent'
+            anchor='left'
+            open={this.state.mobileOpen}
+            onClose={this.handleDrawerToggle}
+            classes={{
+              paper: this.props.classes.drawerPaper,
+            }}
+          >
+            {drawer}
+          </Drawer>
         </nav>
         {/* メイン領域 */}
         <main className={this.props.classes.content}>

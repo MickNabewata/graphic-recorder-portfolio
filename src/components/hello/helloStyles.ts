@@ -20,6 +20,15 @@ const styles = (theme : Theme) =>
         fontSize : 20
       },
       lineHeight : 2
+    },
+    video : {
+      [theme.breakpoints.down('sm')] : {
+        maxWidth : "80vw"
+      },
+      [theme.breakpoints.up('md')] : {
+        maxHeight : "60vh"
+      },
+      
     }
   });
 

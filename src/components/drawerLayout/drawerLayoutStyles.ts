@@ -9,10 +9,11 @@ const styles = (theme : Theme) =>
       display: 'flex'
     },
     drawer: {
+      /*
       [theme.breakpoints.up('md')]: {
         width: drawerWidth,
         flexShrink: 0
-      }
+      }*/
     },
     appBar: {
       [theme.breakpoints.up('md')]: {
@@ -23,9 +24,6 @@ const styles = (theme : Theme) =>
     },
     menuButton: {
       marginRight: 20,
-      [theme.breakpoints.up('md')]: {
-        display: 'none',
-      },
     },
     title:{
       [theme.breakpoints.up('md')]: {
@@ -49,7 +47,8 @@ const styles = (theme : Theme) =>
       padding: theme.spacing.unit,
       backgroundColor : 'whiteSmoke',
       minHeight : '100vh',
-      border : '1px solid black'
+      border : '1px solid black',
+      textAlign : 'center'
     },
     linkItem : {
       backgroundColor : 'whiteSmoke',

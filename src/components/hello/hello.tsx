@@ -29,14 +29,16 @@ class Hello extends React.Component<Prop, State> {
     return (
         <React.Fragment>
           <Typography component='h1' gutterBottom className={this.props.classes.title}>
-            Wellcome to my Room !
+            Thank you checking my fortloio !
           </Typography>
           <br />
           <Typography component='p' className={this.props.classes.hello}>
             当サイトへお越し頂きまして誠にありがとうございます。<br />
-            ここではSharePoint関連の便利ツールをご用意しております。<br />
-            どうぞ存分にご利用ください。
+            このサイトはグラフィックレコーダー 永井結子のポートフォリオサイトです。
           </Typography>
+          <div>
+            <video src="hello.mp4" preload="auto" controls className={this.props.classes.video} />
+          </div>
         </React.Fragment>
     );
   }
