@@ -3,6 +3,10 @@ import createStyles from '@material-ui/core/styles/createStyles';
 
 const styles = (theme : Theme) => 
   createStyles({
+    root : {
+      minHeight : 'calc(100vh - 64px)',
+      backgroundColor : '#fff9f4'
+    },
     title : {
       [theme.breakpoints.down('sm')] : {
         fontSize : 30

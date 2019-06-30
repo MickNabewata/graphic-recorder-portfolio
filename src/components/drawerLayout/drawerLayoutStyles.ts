@@ -5,16 +5,6 @@ const drawerWidth = 240;
 
 const styles = (theme : Theme) => 
   createStyles({
-    root: {
-      display: 'flex'
-    },
-    drawer: {
-      /*
-      [theme.breakpoints.up('md')]: {
-        width: drawerWidth,
-        flexShrink: 0
-      }*/
-    },
     appBar: {
       [theme.breakpoints.up('md')]: {
         width:'100%',
@@ -38,16 +28,15 @@ const styles = (theme : Theme) =>
     toolbar: theme.mixins.toolbar,
     drawerPaper: {
       width: drawerWidth,
-      zIndex : 0,
+      zIndex : -100,
       backgroundImage : 'url("/sideMenu.jpg")',
       overflowX : 'hidden'
     },
     content: {
       flexGrow: 1,
-      padding: theme.spacing.unit,
+      padding: 0,
       backgroundColor : 'whiteSmoke',
       minHeight : '100vh',
-      border : '1px solid black',
       textAlign : 'center'
     },
     linkItem : {
@@ -58,9 +47,6 @@ const styles = (theme : Theme) =>
       '&:hover' : {
         backgroundColor : 'silver'
       }
-    },
-    selected : {
-      backgroundColor : 'lightgray'
     },
     link : {
       textDecoration : 'none'

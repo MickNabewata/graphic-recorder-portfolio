@@ -27,11 +27,11 @@ class Hello extends React.Component<Prop, State> {
   /** レンダリング */
   render() {
     return (
-        <React.Fragment>
-          <Typography component='h1' gutterBottom className={this.props.classes.title}>
-            Thank you checking my fortloio !
-          </Typography>
-          <br />
+      <section className={this.props.classes.root} id='Hello' >
+        <Typography component='h2' gutterBottom className={this.props.classes.title}>
+          Thank you checking my portfolio !
+        </Typography>
+        <div>
           <Typography component='p' className={this.props.classes.hello}>
             当サイトへお越し頂きまして誠にありがとうございます。<br />
             このサイトはグラフィックレコーダー 永井結子のポートフォリオサイトです。
@@ -39,7 +39,8 @@ class Hello extends React.Component<Prop, State> {
           <div>
             <video src="hello.mp4" preload="auto" controls className={this.props.classes.video} />
           </div>
-        </React.Fragment>
+        </div>
+      </section>
     );
   }
 }
