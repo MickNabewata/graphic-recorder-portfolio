@@ -12,6 +12,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import smoothscroll from 'smoothscroll-polyfill';
+import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 
 /** ナビゲーションリンク */
 export type NavLink = {
@@ -37,7 +38,9 @@ interface Prop extends WithStyles<typeof styles> {
 /** ステート型定義 */
 type State = {
   /** Drawerの開閉状態(モバイル表示で利用) */
-  mobileOpen : boolean
+  mobileOpen: boolean,
+  /** ナビゲーション外クリックで強制的に閉じられたか否か */
+  clickAwayed: boolean
 };
 
 /** コンポーネント定義 */
@@ -50,7 +53,8 @@ class DrawerLayout extends React.Component<Prop, State> {
 
     // ステート初期化
     this.state = {
-      mobileOpen : false
+      mobileOpen: false,
+      clickAwayed: false
     };
 
     // スクロールPolyfill
@@ -59,7 +63,12 @@ class DrawerLayout extends React.Component<Prop, State> {
 
   /** Drawerの開閉 */
   handleDrawerToggle = () => {
-    this.setState(state => ({ mobileOpen: !state.mobileOpen }));
+    if (this.state.clickAwayed == true) {
+      this.setState({ mobileOpen: false, clickAwayed: false });
+    }
+    else {
+      this.setState(state => ({ mobileOpen: !state.mobileOpen }));
+    }
   };
 
   /** ナビゲーションクリック */ 
@@ -74,6 +83,16 @@ class DrawerLayout extends React.Component<Prop, State> {
       // メニューを閉じる
       if(link.closeMenuAfterClick) this.setState({ mobileOpen: false });
     };
+  };
+
+  /** Drawerのクローズ */
+  handleDrawerClose = () => {
+    if (this.state.mobileOpen == true) {
+      this.setState({ mobileOpen: false, clickAwayed: true });
+      setTimeout(() => {
+        this.setState({ clickAwayed: false });
+      }, 10);
+    }
   };
 
   /** Drawer内のメニューを生成 */
@@ -137,6 +156,8 @@ class DrawerLayout extends React.Component<Prop, State> {
             <Typography component='h1' color='inherit' className={this.props.classes.title} noWrap>
               Yuiko's Portfolio
             </Typography>
+          </Toolbar>
+          <ClickAwayListener onClickAway={this.handleDrawerClose}>
             <nav>
               <Drawer
                 variant='persistent'
@@ -150,7 +171,7 @@ class DrawerLayout extends React.Component<Prop, State> {
                 {drawer}
               </Drawer>
             </nav>
-          </Toolbar>
+          </ClickAwayListener>
         </AppBar>
         {/* メイン領域 */}
         <main className={this.props.classes.content}>
