@@ -29,7 +29,7 @@ class Hello extends React.Component<Prop, State> {
     return (
       <section id='Hello' >
         <Typography component='h2' gutterBottom className={this.props.classes.title}>
-          Thank you checking my portfolio !
+          視覚領域　可視化　～～を～～へ
         </Typography>
         <div>
           <Typography component='p' className={this.props.classes.hello}>
