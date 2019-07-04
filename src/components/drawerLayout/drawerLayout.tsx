@@ -12,6 +12,8 @@ import MenuIcon from '@material-ui/icons/Menu';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import smoothscroll from 'smoothscroll-polyfill';
+import NextIcon from '@material-ui/icons/ExpandMore';
+import BeforeIcon from '@material-ui/icons/ExpandLess';
 
 /** ナビゲーションリンク */
 export type NavLink = {
@@ -154,9 +156,15 @@ class DrawerLayout extends React.Component<Prop, State> {
         </AppBar>
         {/* メイン領域 */}
         <main className={this.props.classes.content}>
-          <div className={this.props.classes.toolbar} />
           {this.props.children}
         </main>
+        <IconButton
+          color='inherit'
+          aria-label='Go to next page'
+          className={this.props.classes.navigateButton}
+        >
+          <NextIcon className={this.props.classes.navigateIcon} />
+        </IconButton>
       </React.Fragment>
     );
   }

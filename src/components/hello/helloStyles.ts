@@ -3,10 +3,6 @@ import createStyles from '@material-ui/core/styles/createStyles';
 
 const styles = (theme : Theme) => 
   createStyles({
-    root : {
-      minHeight : 'calc(100vh - 64px)',
-      backgroundColor : '#fff9f4'
-    },
     title : {
       [theme.breakpoints.down('sm')] : {
         fontSize : 30
@@ -14,7 +10,11 @@ const styles = (theme : Theme) =>
       [theme.breakpoints.up('md')] : {
         fontSize : 40
       },
-      fontFamily : 'Montserrat,' + theme.typography.fontFamily
+      fontFamily : 'Montserrat,' + theme.typography.fontFamily,
+      color : 'white',
+      position : 'absolute',
+      width : '100%',
+      top : '70vh'
     },
     hello : {
       [theme.breakpoints.down('sm')] : {
@@ -23,16 +23,14 @@ const styles = (theme : Theme) =>
       [theme.breakpoints.up('md')] : {
         fontSize : 20
       },
-      lineHeight : 2
+      lineHeight : 2,
+      color : 'white',
+      position : 'absolute',
+      width : '100%',
+      top : '80vh'
     },
     video : {
-      [theme.breakpoints.down('sm')] : {
-        maxWidth : "80vw"
-      },
-      [theme.breakpoints.up('md')] : {
-        maxHeight : "60vh"
-      },
-      
+      width : '100vw'
     }
   });
 

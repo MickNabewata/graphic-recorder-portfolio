@@ -6,10 +6,7 @@ const drawerWidth = 240;
 const styles = (theme : Theme) => 
   createStyles({
     appBar: {
-      [theme.breakpoints.up('md')]: {
-        width:'100%',
-      },
-      backgroundImage : 'url("/appBar.jpg")',
+      backgroundColor : 'transparent',
       boxShadow : 'none'
     },
     menuButton: {
@@ -17,13 +14,14 @@ const styles = (theme : Theme) =>
     },
     title:{
       [theme.breakpoints.up('md')]: {
-        margin : '0 auto',
         fontSize : 30
       },
       [theme.breakpoints.down('sm')]: {
         fontSize : 20
       },
-      fontFamily : 'Montserrat,' + theme.typography.fontFamily
+      fontFamily : 'Montserrat,' + theme.typography.fontFamily,
+      width : '100%',
+      textAlign : 'right'
     },
     toolbar: theme.mixins.toolbar,
     drawerPaper: {
@@ -35,7 +33,6 @@ const styles = (theme : Theme) =>
     content: {
       flexGrow: 1,
       padding: 0,
-      backgroundColor : 'whiteSmoke',
       minHeight : '100vh',
       textAlign : 'center'
     },
@@ -55,21 +52,15 @@ const styles = (theme : Theme) =>
       fontSize : 14,
       color : theme.palette.secondary.dark
     },
-    contactField : {
-      backgroundColor : 'RGBA(255,255,255,0.7)',
-      margin : '5px auto',
-      padding : '10px',
-      textAlign : 'center',
-      width : '60%'
+    navigateButton : {
+      position : 'fixed',
+      zIndex : 1100,
+      right : '20px',
+      bottom : '20px'
     },
-    contactButton : {
-      padding : 0,
-      marginRight : '5px',
-      marginLeft : '5px'
-    },
-    contactImage : {
-      width : '100%',
-      height : '100%'
+    navigateIcon : {
+      fontSize : '50px',
+      color : 'white'
     }
   });
 

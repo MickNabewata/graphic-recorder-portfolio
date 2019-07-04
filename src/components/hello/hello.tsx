@@ -27,7 +27,7 @@ class Hello extends React.Component<Prop, State> {
   /** レンダリング */
   render() {
     return (
-      <section className={this.props.classes.root} id='Hello' >
+      <section id='Hello' >
         <Typography component='h2' gutterBottom className={this.props.classes.title}>
           Thank you checking my portfolio !
         </Typography>
