@@ -27,7 +27,7 @@ class Hello extends React.Component<Prop, State> {
   /** レンダリング */
   render() {
     return (
-      <section id='Hello' >
+      <section id='Hello' className={this.props.classes.root} >
         <Typography component='h2' gutterBottom className={this.props.classes.title}>
           視覚領域　可視化　～～を～～へ
         </Typography>
@@ -36,8 +36,8 @@ class Hello extends React.Component<Prop, State> {
             当サイトへお越し頂きまして誠にありがとうございます。<br />
             このサイトはグラフィックレコーダー 永井結子のポートフォリオサイトです。
           </Typography>
-          <div>
-            <video src="hello.mp4" preload="auto" controls className={this.props.classes.video} />
+          <div className={this.props.classes.videoArea}>
+            <video src="hello.mp4" poster="hello.jpg" preload="auto" autoPlay loop className={this.props.classes.video} />
           </div>
         </div>
       </section>

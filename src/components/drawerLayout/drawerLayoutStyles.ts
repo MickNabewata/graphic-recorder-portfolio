@@ -56,12 +56,17 @@ const styles = (theme : Theme) =>
       position : 'fixed',
       zIndex : 1100,
       right : '20px',
-      bottom : '20px'
+      bottom: '20px'
     },
     navigateIcon : {
-      fontSize : '50px',
-      color : 'white'
-    }
+      fontSize : '50px'
+    },
+    white: {
+      color: 'white'
+    },
+    black: {
+      color: 'black'
+    },
   });
 
 export default styles;

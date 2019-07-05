@@ -15,6 +15,7 @@ import smoothscroll from 'smoothscroll-polyfill';
 import NextIcon from '@material-ui/icons/ExpandMore';
 import BeforeIcon from '@material-ui/icons/ExpandLess';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
+import ScrollBack from '../scrollback/scrollback';
 
 /** ナビゲーションリンク */
 export type NavLink = {
@@ -53,6 +54,13 @@ class DrawerLayout extends React.Component<Prop, State> {
   {
     super(props);
 
+    // スクロール位置を取得
+    // ブラウザによって取り方が違うので全部取って最大値を採用
+    let scrollTop = Math.max(
+      window.pageYOffset,
+      document.documentElement.scrollTop,
+      document.body.scrollTop);
+
     // ステート初期化
     this.state = {
       mobileOpen: false,
@@ -61,6 +69,11 @@ class DrawerLayout extends React.Component<Prop, State> {
 
     // スクロールPolyfill
     smoothscroll.polyfill();
+
+    // スクロールイベント
+    window.addEventListener('scroll', (e) => {
+
+    });
   }
 
   /** Drawerの開閉 */
@@ -179,13 +192,15 @@ class DrawerLayout extends React.Component<Prop, State> {
         <main className={this.props.classes.content}>
           {this.props.children}
         </main>
-        <IconButton
-          color='inherit'
-          aria-label='Go to next page'
-          className={this.props.classes.navigateButton}
-        >
-          <NextIcon className={this.props.classes.navigateIcon} />
-        </IconButton>
+        <ScrollBack classNames={[this.props.classes.white, this.props.classes.black]} breakpoints={[210]}>
+          <IconButton
+            color='inherit'
+            aria-label='Go to next page'
+            className={this.props.classes.navigateButton}
+          >
+            <NextIcon className={this.props.classes.navigateIcon} />
+          </IconButton>
+        </ScrollBack>
       </React.Fragment>
     );
   }
