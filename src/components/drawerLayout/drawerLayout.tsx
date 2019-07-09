@@ -92,7 +92,7 @@ class DrawerLayout extends React.Component<Prop, State> {
       // スクロールする
       let to = document.getElementById(link.url);
       if(to) {
-        window.scrollTo({ top : to.offsetTop - 56, behavior : 'smooth' });
+        window.scrollTo({ top : to.offsetTop, behavior : 'smooth' });
       }
 
       // メニューを閉じる
@@ -154,23 +154,30 @@ class DrawerLayout extends React.Component<Prop, State> {
     // Drawerコントロール
     let drawer : JSX.Element = this.createDrawer();
 
+    // ウインドウの高さ
+    let winHeight = window.innerHeight - 10;
+
     return (
       // ルート要素
       <React.Fragment>
         <AppBar position='fixed' className={this.props.classes.appBar}>
           <Toolbar>
-            <IconButton
-              color='inherit'
-              aria-label='Open drawer'
-              onClick={this.handleDrawerToggle}
-              className={this.props.classes.menuButton}
-            >
-              <MenuIcon />
-            </IconButton>
+            <ScrollBack classNames={[this.props.classes.white, this.props.classes.black]} breakpoints={[winHeight]}>
+              <IconButton
+                color='inherit'
+                aria-label='Open drawer'
+                onClick={this.handleDrawerToggle}
+                className={this.props.classes.menuButton}
+              >
+                <MenuIcon />
+              </IconButton>
+            </ScrollBack>
             {/* タイトル文言 */}
-            <Typography component='h1' color='inherit' className={this.props.classes.title} noWrap>
-              Yuiko's Portfolio
-            </Typography>
+            <ScrollBack classNames={[this.props.classes.white, this.props.classes.translate]} breakpoints={[winHeight]}>
+              <Typography component='h1' color='inherit' className={this.props.classes.title} noWrap>
+                Yuiko's Portfolio
+              </Typography>
+            </ScrollBack>
           </Toolbar>
           <ClickAwayListener onClickAway={this.handleDrawerClose}>
             <nav>
@@ -192,7 +199,7 @@ class DrawerLayout extends React.Component<Prop, State> {
         <main className={this.props.classes.content}>
           {this.props.children}
         </main>
-        <ScrollBack classNames={[this.props.classes.white, this.props.classes.black]} breakpoints={[210]}>
+        <ScrollBack classNames={[this.props.classes.white, this.props.classes.black]} breakpoints={[0]}>
           <IconButton
             color='inherit'
             aria-label='Go to next page'

@@ -3,14 +3,10 @@ import createStyles from '@material-ui/core/styles/createStyles';
 
 const styles = (theme : Theme) => {
 
-  let toolbarHeight = `${theme.mixins.toolbar.minHeight}px`;
-  let thumbnailHeight = '120px';
-  let workTagsHeight = '40px';
-  let parentMargin = '36px';
-
   return createStyles({
     root : {
-      backgroundColor : '#f4f9ff'
+      backgroundColor : 'white',
+      borderTop : '8px solid gainsboro'
     },
     title : {
       [theme.breakpoints.down('sm')] : {
@@ -19,22 +15,22 @@ const styles = (theme : Theme) => {
       [theme.breakpoints.up('md')] : {
         fontSize : 40
       },
+      height : '10vh',
       fontFamily : 'Montserrat,' + theme.typography.fontFamily
     },
     workGrid : {
-      margin : '0 auto',
-      [theme.breakpoints.down('sm')] : {
-        width : '90vw'
-      },
-      [theme.breakpoints.up('md')] : {
-        width : '95vw'
-      }
+      margin : '0px auto',
+      width : '90%'
     },
     workPaper : {
-      padding : theme.spacing.unit
+      height : 'calc(90vh / 2)'
     },
     workCard : {
       height : '100%'
+    },
+    workActionArea : {
+      height : '90%',
+      position : 'relative'
     },
     workTitle : {
       [theme.breakpoints.down('sm')] : {
@@ -53,13 +49,25 @@ const styles = (theme : Theme) => {
       }
     },
     workThumbnail : {
-      height : thumbnailHeight
+      width : '100%',
+      height : '100%'
     },
     workContent : {
-      height : `calc(100vh - ${toolbarHeight} - ${toolbarHeight} - ${thumbnailHeight} - ${workTagsHeight} - ${parentMargin})`
+      position : 'absolute',
+      top : 0,
+      left : 0,
+      width : '100%',
+      height : '100%',
+      background: 'rgba(255,255,255,0.8)'
     },
     workTags : {
-      height : workTagsHeight
+      height : '10%'
+    },
+    disable : {
+      display : 'none'
+    },
+    enable : {
+      display : 'block'
     }
   });
 }

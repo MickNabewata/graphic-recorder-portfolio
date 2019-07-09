@@ -26,6 +26,7 @@ class Hello extends React.Component<Prop, State> {
 
   /** レンダリング */
   render() {
+    let videoUri = 'https://firebasestorage.googleapis.com/v0/b/graphicrecorderportfolio.appspot.com/o/hello.mp4?alt=media&token=402894e4-0f9e-48ab-aa2a-e76aed5e6231';
     return (
       <section id='Hello' className={this.props.classes.root} >
         <Typography component='h2' gutterBottom className={this.props.classes.title}>
@@ -37,7 +38,7 @@ class Hello extends React.Component<Prop, State> {
             このサイトはグラフィックレコーダー 永井結子のポートフォリオサイトです。
           </Typography>
           <div className={this.props.classes.videoArea}>
-            <video src="hello.mp4" poster="hello.jpg" preload="auto" autoPlay loop className={this.props.classes.video} />
+            <video src={videoUri} autoPlay loop playsInline muted className={this.props.classes.video} />
           </div>
         </div>
       </section>

@@ -48,7 +48,7 @@ class App extends React.Component<Prop, State> {
         closeMenuAfterClick : true
       },
       {
-        text : 'Jobs',
+        text : 'How',
         url : 'Jobs',
         icon : <JobsIcon />,
         closeMenuAfterClick : true

@@ -39,6 +39,24 @@ class Works extends React.Component<Prop, State> {
     return new WorkData().get();
   }
 
+  /** カードへのマウスオーバー */
+  cardMouseOver = (elementId : string) => () => {
+    let content = document.getElementById(elementId);
+    if(content)
+    {
+      content.className = `${this.props.classes.workContent} ${this.props.classes.enable}`;
+    }
+  }
+
+  /** カードからのマウスアウト */
+  cardMouseOut = (elementId : string) => () => {
+    let content = document.getElementById(elementId);
+    if(content)
+    {
+      content.className = `${this.props.classes.workContent} ${this.props.classes.disable}`;
+    }
+  }
+
   /** レンダリング */
   render() {
     let works = this.getWorks();
@@ -49,17 +67,16 @@ class Works extends React.Component<Prop, State> {
           Works
         </Typography>
         <div>
-          <Grid container spacing={16} className={this.props.classes.workGrid} justify='center' alignItems='center' >
-            { works.map((work) => {
+          <Grid container spacing={40} className={this.props.classes.workGrid} justify='center' alignItems='center' >
+            { works.map((work, i) => {
               return (
-                <Grid item xs={12} md={4} className={this.props.classes.workPaper} key={`WorkPaper-${work.title}`} >
-                  <Card className={this.props.classes.workCard}>
-                    <CardActionArea >
+                <Grid item xs={12} md={3} className={this.props.classes.workPaper} key={`WorkPaper-${work.title}`} >
+                  <Card elevation={0} className={this.props.classes.workCard}>
+                    <CardActionArea className={this.props.classes.workActionArea} onMouseOver={this.cardMouseOver(`cardContent-${i}`)} onMouseOut={this.cardMouseOut(`cardContent-${i}`)} >
                       <CardMedia
-                        title={work.title}
                         image={work.thumbnailUrl}
                         className={this.props.classes.workThumbnail} />
-                      <CardContent className={this.props.classes.workContent}>
+                      <CardContent id={`cardContent-${i}`} className={`${this.props.classes.workContent} ${this.props.classes.disable}`}>
                         <section>
                           <Typography component='h3' gutterBottom className={this.props.classes.workTitle}>
                             {work.title}

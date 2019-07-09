@@ -5,11 +5,12 @@ const styles = (theme : Theme) =>
   createStyles({
     root: {
       height: '100vh',
-      position : 'relative'
+      position : 'relative',
+      overflow : 'hidden'
     },
     title : {
       [theme.breakpoints.down('sm')] : {
-        fontSize : 30
+        fontSize : '5vw'
       },
       [theme.breakpoints.up('md')] : {
         fontSize : 40
@@ -22,7 +23,7 @@ const styles = (theme : Theme) =>
     },
     hello : {
       [theme.breakpoints.down('sm')] : {
-        fontSize : 17
+        fontSize : '3.5vw'
       },
       [theme.breakpoints.up('md')] : {
         fontSize : 20
@@ -34,7 +35,12 @@ const styles = (theme : Theme) =>
       width: '100%'
     },
     video : {
-      width: '100%'
+      [theme.breakpoints.down('sm')] : {
+        height : '100vh'
+      },
+      [theme.breakpoints.up('md')] : {
+        width: '100%'
+      }
     },
     videoArea: {
       width: '100%',

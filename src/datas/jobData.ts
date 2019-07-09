@@ -28,7 +28,7 @@ export default class JobData {
             },
             {
                 title : 'アイディアスケッチ',
-                description : [ '' ],
+                description : [ 'ゴリラです。', 'ゴリラです。', 'ゴリラです。' ],
                 thumbnailUrl : 'https://2.bp.blogspot.com/-KK0qDJEicKI/UMluuXl6NJI/AAAAAAAABuE/E4k6X69EX-s/s1600/Silverback+Gorilla+Wildlife.jpg'
             }
         ];
