@@ -54,13 +54,6 @@ class DrawerLayout extends React.Component<Prop, State> {
   {
     super(props);
 
-    // スクロール位置を取得
-    // ブラウザによって取り方が違うので全部取って最大値を採用
-    let scrollTop = Math.max(
-      window.pageYOffset,
-      document.documentElement.scrollTop,
-      document.body.scrollTop);
-
     // ステート初期化
     this.state = {
       mobileOpen: false,
@@ -69,11 +62,6 @@ class DrawerLayout extends React.Component<Prop, State> {
 
     // スクロールPolyfill
     smoothscroll.polyfill();
-
-    // スクロールイベント
-    window.addEventListener('scroll', (e) => {
-
-    });
   }
 
   /** Drawerの開閉 */
@@ -90,15 +78,20 @@ class DrawerLayout extends React.Component<Prop, State> {
   handleClick = (link : NavLink) => {
     return (event : React.MouseEvent<HTMLElement, MouseEvent>) => {
       // スクロールする
-      let to = document.getElementById(link.url);
-      if(to) {
-        window.scrollTo({ top : to.offsetTop, behavior : 'smooth' });
-      }
+      this.navigate(link.url);
 
       // メニューを閉じる
       if(link.closeMenuAfterClick) this.setState({ mobileOpen: false });
     };
   };
+
+  /** スクロールする */
+  navigate(id : string) {
+    let to = document.getElementById(id);
+    if(to) {
+      window.scrollTo({ top : to.offsetTop, behavior : 'smooth' });
+    }
+  }
 
   /** Drawerのクローズ */
   handleDrawerClose = () => {
@@ -146,6 +139,28 @@ class DrawerLayout extends React.Component<Prop, State> {
         })}
       </div>
     );
+  }
+
+  /** 次の章までスクロール */
+  slideDown = () => {
+    // スクロール位置を取得
+    // ブラウザによって取り方が違うので全部取って最大値を採用
+    let scrollTop = Math.max(
+      window.pageYOffset,
+      document.documentElement.scrollTop,
+      document.body.scrollTop);
+    
+    // スクロール先を取得
+    let breakpoints : string[] = [ 'Hello', 'Jobs', 'Works' ];
+    let navigated = false;
+    breakpoints.forEach((breakpoint) => {
+      let to = document.getElementById(breakpoint);
+      if(navigated == false && to && to.offsetTop - 10 >= scrollTop)
+      {
+        navigated = true;
+        this.navigate(breakpoint);
+      }
+    });
   }
 
   /** レンダリング */
@@ -204,6 +219,7 @@ class DrawerLayout extends React.Component<Prop, State> {
             color='inherit'
             aria-label='Go to next page'
             className={this.props.classes.navigateButton}
+            onClick={this.slideDown}
           >
             <NextIcon className={this.props.classes.navigateIcon} />
           </IconButton>

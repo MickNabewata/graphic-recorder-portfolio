@@ -3,9 +3,8 @@ import styles from './jobsStyles';
 import withStyles, { WithStyles } from '@material-ui/core/styles/withStyles';
 import Typography from '@material-ui/core/Typography';
 import JobData, { IJob } from '../../datas/jobData';
+import JobCard from '../jobCard/jobCard';
 import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
-import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import Left from '@material-ui/icons/ChevronLeft';
 import Right from '@material-ui/icons/ChevronRight';
@@ -36,27 +35,9 @@ class Jobs extends React.Component<Prop, State> {
     return new JobData().get();
   }
 
-  /** サムネイルへのマウスオーバー */
-  jobMouseOver = (elementId : string) => () => {
-    let content = document.getElementById(elementId);
-    if(content)
-    {
-      content.className = `${this.props.classes.showJobDetail} ${this.props.classes.enable}`;
-    }
-  }
-
-  /** サムネイルからのマウスアウト */
-  jobMouseOut = (elementId : string) => () => {
-    let content = document.getElementById(elementId);
-    if(content)
-    {
-      content.className = `${this.props.classes.showJobDetail} ${this.props.classes.disable}`;
-    }
-  }
-
   /** レンダリング */
   render() {
-    let jobs = this.getJobs();
+    let jobs : IJob[] = this.getJobs();
 
     return (
       <section className={this.props.classes.root} id='Jobs' >
@@ -73,35 +54,8 @@ class Jobs extends React.Component<Prop, State> {
                 <Left className={this.props.classes.slideIcon} />
               </IconButton>
             </Grid>
-            { jobs.map((job, i) => {
-              return (
-                <Grid item xs={12} md={3} key={`JobPaper-${job.title}`} >
-                  <Paper elevation={0} className={this.props.classes.jobPaper} >
-                    <section>
-                      <Typography component='h3' className={this.props.classes.jobTitle}>
-                        <IconButton
-                          color='inherit'
-                          aria-label='Slider'
-                          className={this.props.classes.jobThumbnailButton}
-                          onMouseOver={this.jobMouseOver(`showJobDetail-${i}`)}
-                          onMouseOut={this.jobMouseOut(`showJobDetail-${i}`)}
-                        >
-                          <Avatar src={job.thumbnailUrl} className={this.props.classes.jobThumbnail} />
-                          <div id={`showJobDetail-${i}`} className={`${this.props.classes.showJobDetail} ${this.props.classes.disable}`} >
-                            <div className={this.props.classes.showJobDetailText}>作品を見る</div>
-                          </div>
-                        </IconButton>
-                        {job.title}
-                      </Typography>
-                      <div>
-                        {job.description.map((description, i) => {
-                          return <Typography component='p' className={this.props.classes.jobDescription} key={`jobDescription-${job.title}-${i}`}>{description}</Typography>;
-                        })}
-                      </div>
-                    </section>
-                  </Paper>
-                </Grid>
-              )
+            { jobs.map((job : IJob) => {
+              return <JobCard job={job} />;
             }) }
             <Grid item xs={12} md={1} className={this.props.classes.jobGridSlider}>
               <IconButton
