@@ -37,7 +37,7 @@ class Jobs extends React.Component<Prop, State> {
 
   /** レンダリング */
   render() {
-    let jobs : IJob[] = this.getJobs();
+    let jobs: IJob[] = this.getJobs();
 
     return (
       <section className={this.props.classes.root} id='Jobs' >
@@ -55,7 +55,7 @@ class Jobs extends React.Component<Prop, State> {
               </IconButton>
             </Grid>
             { jobs.map((job : IJob) => {
-              return <JobCard job={job} />;
+              return <JobCard job={job} key={`jobCard-${job.title}`} />;
             }) }
             <Grid item xs={12} md={1} className={this.props.classes.jobGridSlider}>
               <IconButton
