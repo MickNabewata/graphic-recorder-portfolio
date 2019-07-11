@@ -7,7 +7,7 @@ interface Prop extends WithStyles<typeof styles> {
   /** クラス名(複数指定可) */
   classNames: string[];
   /** ブレークポイント(複数指定可) */
-  breakpoints: number[];
+  breakpoints: Array<number | 'bottom'>;
 }
 
 /** ステート型定義 */
@@ -16,10 +16,21 @@ type State = {
   className: string;
 };
 
+/** 画面最下部のスクロール位置を算出 */
+function getBottomY(): number {
+  // 画面高さ
+  let winHeight = window.innerHeight + 5;
+
+  // HTML文書高さ
+  let docHeight = window.document.body.clientHeight;
+
+  return docHeight - winHeight;
+}
+
 /** 現在のスクロール位置に該当するブレークポイントを取得 */
 function getCurrentClassName(areas: Prop): string {
   let ret = '';
-
+  
   if (areas && areas.classNames && areas.classNames.length > 0)
   {
     ret = areas.classNames[0];
@@ -34,7 +45,17 @@ function getCurrentClassName(areas: Prop): string {
         document.body.scrollTop);
       
       areas.breakpoints.forEach((breakpoint, i) => {
-        if (breakpoint < top)
+        let bk: number = 0;
+        if (breakpoint == 'bottom')
+        {
+          bk = getBottomY();
+        }
+        else
+        {
+          bk = breakpoint;
+        }
+
+        if (bk < top)
         {
           if (areas.classNames.length > i + 1) ret = areas.classNames[i + 1];
         }

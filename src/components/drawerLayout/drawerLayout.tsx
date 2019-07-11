@@ -156,6 +156,12 @@ class DrawerLayout extends React.Component<Prop, State> {
     window.scrollTo({ top: to, behavior: 'smooth' });
   }
 
+  /** 先頭までスクロール */
+  slideUp = () => {
+    // スクロール
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
   /** レンダリング */
   render() {
     
@@ -207,7 +213,7 @@ class DrawerLayout extends React.Component<Prop, State> {
         <main className={this.props.classes.content}>
           {this.props.children}
         </main>
-        <ScrollBack classNames={[this.props.classes.white, this.props.classes.black]} breakpoints={[0]}>
+        <ScrollBack classNames={[this.props.classes.white, this.props.classes.black, this.props.classes.disable]} breakpoints={[0, 'bottom']}>
           <IconButton
             color='inherit'
             aria-label='Go to next page'
@@ -215,6 +221,16 @@ class DrawerLayout extends React.Component<Prop, State> {
             onClick={this.slideDown}
           >
             <NextIcon className={this.props.classes.navigateIcon} />
+          </IconButton>
+        </ScrollBack>
+        <ScrollBack classNames={[this.props.classes.disable, this.props.classes.enable]} breakpoints={['bottom']}>
+          <IconButton
+            color='inherit'
+            aria-label='Go to previous page'
+            className={this.props.classes.navigateButton}
+            onClick={this.slideUp}
+          >
+            <BeforeIcon className={this.props.classes.navigateIcon} />
           </IconButton>
         </ScrollBack>
       </React.Fragment>

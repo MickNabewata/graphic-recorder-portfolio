@@ -67,6 +67,12 @@ const styles = (theme : Theme) =>
     black: {
       color: 'black'
     },
+    enable: {
+      display: 'block'
+    },
+    disable: {
+      display : 'none'
+    },
     translate : {
       [theme.breakpoints.up('md')]: {
         color: 'black'
