@@ -78,20 +78,15 @@ class DrawerLayout extends React.Component<Prop, State> {
   handleClick = (link : NavLink) => {
     return (event : React.MouseEvent<HTMLElement, MouseEvent>) => {
       // スクロールする
-      this.navigate(link.url);
+      let to = document.getElementById(link.url);
+      if (to) {
+        window.scrollTo({ top: to.offsetTop, behavior: 'smooth' });
+      }
 
       // メニューを閉じる
       if(link.closeMenuAfterClick) this.setState({ mobileOpen: false });
     };
   };
-
-  /** スクロールする */
-  navigate(id : string) {
-    let to = document.getElementById(id);
-    if(to) {
-      window.scrollTo({ top : to.offsetTop, behavior : 'smooth' });
-    }
-  }
 
   /** Drawerのクローズ */
   handleDrawerClose = () => {
@@ -151,16 +146,14 @@ class DrawerLayout extends React.Component<Prop, State> {
       document.body.scrollTop);
     
     // スクロール先を取得
-    let breakpoints : string[] = [ 'Hello', 'Jobs', 'Works' ];
-    let navigated = false;
-    breakpoints.forEach((breakpoint) => {
-      let to = document.getElementById(breakpoint);
-      if(navigated == false && to && to.offsetTop - 10 >= scrollTop)
-      {
-        navigated = true;
-        this.navigate(breakpoint);
-      }
-    });
+    let to : number = 0;
+    let winHeight = 0;
+    let hello = document.getElementById('Hello');
+    if (hello) winHeight = hello.clientHeight;
+    to = (Math.round(scrollTop / winHeight) + 1) * winHeight;
+
+    // スクロール
+    window.scrollTo({ top: to, behavior: 'smooth' });
   }
 
   /** レンダリング */
