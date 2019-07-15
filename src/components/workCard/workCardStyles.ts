@@ -5,14 +5,17 @@ const styles = (theme : Theme) => {
 
   return createStyles({
     workPaper : {
-      height : 'calc(90vh / 2)'
+      height : 'calc(87vh / 2)'
     },
     workCard : {
       height : '100%'
     },
     workActionArea : {
-      height : '90%',
+      height : '89%',
       position : 'relative'
+    },
+    workActionSpace : {
+      minHeight : '1%'
     },
     workTitle : {
       [theme.breakpoints.down('sm')] : {
@@ -20,7 +23,8 @@ const styles = (theme : Theme) => {
       },
       [theme.breakpoints.up('md')] : {
         fontSize : 26
-      }
+      },
+      fontFamily : '"Sawarabi Mincho", sans-serif'
     },
     workDescription : {
       [theme.breakpoints.down('sm')] : {
@@ -40,21 +44,21 @@ const styles = (theme : Theme) => {
       left : 0,
       width : '100%',
       height : '100%',
-      background: 'rgba(255,255,255,0.8)'
+      background: 'rgba(255,255,255,0.8)',
+      overflow : 'hidden'
     },
     workTags : {
+      marginTop : '5px',
       height : '10%'
+    },
+    tagLink : {
+      textDecoration : 'none'
     },
     disable : {
       display : 'none'
     },
     enable : {
       display : 'block'
-    },
-    closeButton: {
-      position: 'absolute',
-      top: '10px',
-      right: '10px'
     }
   });
 }

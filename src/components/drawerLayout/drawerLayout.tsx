@@ -164,7 +164,6 @@ class DrawerLayout extends React.Component<Prop, State> {
 
   /** レンダリング */
   render() {
-    
     // Drawerコントロール
     let drawer : JSX.Element = this.createDrawer();
 

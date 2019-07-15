@@ -22,7 +22,7 @@ function theme() : Theme {
     typography: {
       useNextVariants: true,
       fontFamily:[
-        '"M PLUS Rounded 1c"', 'Roboto', 'Helvetica', 'Arial', 'sans-serif'
+        'Muli', '"Sawarabi Mincho"', 'Roboto', 'Helvetica', 'Arial', 'sans-serif'
       ].join(',')
     }
   });

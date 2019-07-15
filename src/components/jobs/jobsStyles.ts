@@ -15,7 +15,7 @@ const styles = (theme : Theme) => {
         fontSize : 40
       },
       height : '10vh',
-      fontFamily : 'Montserrat,' + theme.typography.fontFamily
+      fontFamily : '"Muli Bold", sans-serif'
     },
     jobContents : {
       margin : '0 auto',

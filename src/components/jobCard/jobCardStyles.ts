@@ -12,7 +12,8 @@ const styles = (theme : Theme) => {
       },
       [theme.breakpoints.up('md')] : {
         fontSize : 30
-      }
+      },
+      fontFamily : '"Sawarabi Mincho", sans-serif'
     },
     jobDescription : {
       [theme.breakpoints.down('sm')] : {
@@ -42,7 +43,8 @@ const styles = (theme : Theme) => {
       background: 'rgba(255,255,255,0.8)'
     },
     showJobDetailText : {
-      margin : '0 auto'
+      margin : '0 auto',
+      color : 'rgb(44, 44, 44)'
     },
     disable : {
       display : 'none'

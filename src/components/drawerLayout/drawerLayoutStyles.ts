@@ -7,10 +7,13 @@ const styles = (theme : Theme) =>
   createStyles({
     appBar: {
       backgroundColor : 'transparent',
-      boxShadow : 'none'
+      boxShadow : 'none',
+      pointerEvents : 'none',
+      fontFamily : theme.typography.fontFamily
     },
     menuButton: {
       marginRight: 20,
+      pointerEvents : 'auto'
     },
     title:{
       [theme.breakpoints.up('md')]: {
@@ -19,7 +22,7 @@ const styles = (theme : Theme) =>
       [theme.breakpoints.down('sm')]: {
         fontSize : 20
       },
-      fontFamily : 'Montserrat,' + theme.typography.fontFamily,
+      fontFamily : "'Muli Bold', sans-serif",
       width : '100%',
       textAlign : 'right'
     },
@@ -27,14 +30,15 @@ const styles = (theme : Theme) =>
     drawerPaper: {
       width: drawerWidth,
       zIndex : -100,
-      backgroundImage : 'url("/sideMenu.jpg")',
-      overflowX : 'hidden'
+      overflowX : 'hidden',
+      backgroundColor : 'rgba(255, 255, 255, 0.1)'
     },
     content: {
       flexGrow: 1,
       padding: 0,
       minHeight : '100vh',
-      textAlign : 'center'
+      textAlign : 'center',
+      fontFamily : theme.typography.fontFamily
     },
     linkItem : {
       backgroundColor : 'whiteSmoke',
@@ -43,7 +47,8 @@ const styles = (theme : Theme) =>
       padding : '5px',
       '&:hover' : {
         backgroundColor : 'silver'
-      }
+      },
+      pointerEvents : 'auto'
     },
     link : {
       textDecoration : 'none'
@@ -56,7 +61,7 @@ const styles = (theme : Theme) =>
       position : 'fixed',
       zIndex : 1100,
       right : '20px',
-      bottom: '20px'
+      bottom : '20px'
     },
     navigateIcon : {
       fontSize : '50px'

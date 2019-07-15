@@ -3,6 +3,7 @@ import styles from './jobCardStyles';
 import withStyles, { WithStyles } from '@material-ui/core/styles/withStyles';
 import Typography from '@material-ui/core/Typography';
 import { IJob } from '../../datas/jobData';
+import { Link } from 'react-router-dom';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Avatar from '@material-ui/core/Avatar';
@@ -56,18 +57,20 @@ class JobCard extends React.Component<Prop, State> {
         <Paper elevation={0} className={this.props.classes.jobPaper} >
           <section>
             <Typography component='h3' className={this.props.classes.jobTitle}>
-              <IconButton
-                color='inherit'
-                aria-label='Slider'
-                className={this.props.classes.jobThumbnailButton}
-                onMouseOver={this.jobMouseOver(`showJobDetail-${this.props.job.title}`)}
-                onMouseOut={this.jobMouseOut(`showJobDetail-${this.props.job.title}`)}
-              >
-                <Avatar src={this.props.job.thumbnailUrl} className={this.props.classes.jobThumbnail} />
-                <div id={`showJobDetail-${this.props.job.title}`} className={`${this.props.classes.showJobDetail} ${this.props.classes.disable}`} >
-                  <div className={this.props.classes.showJobDetailText}>作品を見る</div>
-                </div>
-              </IconButton>
+              <Link to={`${location.pathname}?tag=${this.props.job.title}`} >
+                <IconButton
+                  color='inherit'
+                  aria-label='Slider'
+                  className={this.props.classes.jobThumbnailButton}
+                  onMouseOver={this.jobMouseOver(`showJobDetail-${this.props.job.title}`)}
+                  onMouseOut={this.jobMouseOut(`showJobDetail-${this.props.job.title}`)}
+                >
+                  <Avatar src={this.props.job.thumbnailUrl} className={this.props.classes.jobThumbnail} />
+                  <div id={`showJobDetail-${this.props.job.title}`} className={`${this.props.classes.showJobDetail} ${this.props.classes.disable}`} >
+                    <div className={this.props.classes.showJobDetailText}>作品を見る</div>
+                  </div>
+                </IconButton>
+              </Link>
               {this.props.job.title}
             </Typography>
             <div>

@@ -19,17 +19,17 @@ export default class JobData {
             {
                 title : 'グラフィックレコーダー',
                 description : [ 'ゴリラです。', 'ゴリラです。', 'ゴリラです。' ],
-                thumbnailUrl : 'https://2.bp.blogspot.com/-KK0qDJEicKI/UMluuXl6NJI/AAAAAAAABuE/E4k6X69EX-s/s1600/Silverback+Gorilla+Wildlife.jpg'
+                thumbnailUrl : 'https://firebasestorage.googleapis.com/v0/b/graphicrecorderportfolio.appspot.com/o/catSmall.jpg?alt=media&token=dac25bec-7207-4a59-bedb-3d6b5cb719cd'
             },
             {
                 title : 'イラストレーター',
                 description : [ 'ゴリラです。ゴリラです。ゴリラです。ゴリラです。ゴリラです。ゴリラです。ゴリラです。ゴリラです。ゴリラです。' ],
-                thumbnailUrl : 'https://2.bp.blogspot.com/-KK0qDJEicKI/UMluuXl6NJI/AAAAAAAABuE/E4k6X69EX-s/s1600/Silverback+Gorilla+Wildlife.jpg'
+                thumbnailUrl : 'https://firebasestorage.googleapis.com/v0/b/graphicrecorderportfolio.appspot.com/o/catBig.jpg?alt=media&token=f12d00f6-7f33-4f03-b7eb-619377a48498'
             },
             {
                 title : 'アイディアスケッチ',
                 description : [ 'ゴリラです。', 'ゴリラです。', 'ゴリラです。' ],
-                thumbnailUrl : 'https://2.bp.blogspot.com/-KK0qDJEicKI/UMluuXl6NJI/AAAAAAAABuE/E4k6X69EX-s/s1600/Silverback+Gorilla+Wildlife.jpg'
+                thumbnailUrl : 'https://firebasestorage.googleapis.com/v0/b/graphicrecorderportfolio.appspot.com/o/catBig2.jpg?alt=media&token=17aff910-222f-4080-96c1-dc85c90fa8b8'
             }
         ];
     }

@@ -7,7 +7,7 @@ interface Prop extends WithStyles<typeof styles> {
   /** クラス名(複数指定可) */
   classNames: string[];
   /** ブレークポイント(複数指定可) */
-  breakpoints: Array<number | 'bottom'>;
+  breakpoints: Array<number | 'this' | 'bottom'>;
 }
 
 /** ステート型定義 */
@@ -24,7 +24,7 @@ function getBottomY(): number {
   // HTML文書高さ
   let docHeight = window.document.body.clientHeight;
 
-  return docHeight - winHeight;
+  return (docHeight > 0)? docHeight - winHeight : 0;
 }
 
 /** 現在のスクロール位置に該当するブレークポイントを取得 */
@@ -49,6 +49,10 @@ function getCurrentClassName(areas: Prop): string {
         if (breakpoint == 'bottom')
         {
           bk = getBottomY();
+        }
+        else if (breakpoint == 'this')
+        {
+          
         }
         else
         {
@@ -83,14 +87,6 @@ class ScrollBack extends React.Component<Prop, State> {
   }
 
   /** 要素のClassNameにstateのclassNameを追加して描画 */
-  Child2 = (props: any) => {
-    let ret = React.cloneElement(props.children, { ...props });
-    let className = (ret.props.className) ? ret.props.className : '';
-    return <React.Fragment>
-      {React.cloneElement(ret, { className: `${className} ${this.state.className}` }) }
-    </React.Fragment>;
-  };
-
   Child = (props: any) => {
     return <React.Fragment>
       {React.cloneElement(props.elm, { ...props, className: `${props.elm.props.className} ${this.state.className}` })}

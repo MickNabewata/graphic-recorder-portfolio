@@ -1,9 +1,10 @@
 import React from 'react';
 import styles from './workCardStyles';
 import withStyles, { WithStyles } from '@material-ui/core/styles/withStyles';
-import { Theme } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import { IWork } from '../../datas/workData';
+import WorkDialog from '../workDialog/workDialog';
+import { Link } from 'react-router-dom';
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -11,21 +12,11 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import { IconButton } from '@material-ui/core';
-import CloseIcon from '@material-ui/icons/Close';
 
 /** プロパティ型定義 */
 interface Prop extends WithStyles<typeof styles> {
   /** ジョブデータ */
   work: IWork;
-
-  /** テーマ */
-  theme: Theme;
 }
 
 /** ステート型定義 */
@@ -79,13 +70,11 @@ class WorkCard extends React.Component<Prop, State> {
   /** タグクリック */
   handelTagClick = (tag : string) => () => {
     this.handleDialogClose();
-    alert(tag);
   }
 
   /** レンダリング */
   render() {
     let work = this.props.work;
-    let fullScreen = (this.props.theme.breakpoints.values.sm >= window.innerWidth);
 
     return (
       <Grid item xs={12} md={3} className={this.props.classes.workPaper} key={`WorkPaper-${work.title}`} >
@@ -117,56 +106,32 @@ class WorkCard extends React.Component<Prop, State> {
               </section>
             </CardContent>
           </CardActionArea>
+          <div className={this.props.classes.workActionSpace} />
           <CardActions className={this.props.classes.workTags}>
-            {work.tags.map((tag) => {
+            {work.tags.slice(0,3).map((tag, i) => {
               return (
-                <Button
-                  size='small'
-                  color='primary'
-                  onClick={this.handelTagClick(tag)}
-                  key={`workTag-${tag}`}>
-                    {tag}
-                </Button>
+                (tag)?
+                  <Link
+                    to={`${location.pathname}?tag=${tag}`}
+                    className={this.props.classes.tagLink}
+                    key={`work-${work.title}-tag-${i}`}>
+                    <Button
+                      size='small'
+                      color='primary'
+                      onClick={this.handelTagClick(tag)}
+                      key={`workTag-${i}`}>
+                        {tag}
+                    </Button>
+                  </Link>:
+                  <React.Fragment key={`work-frag-${work.title}-tag-${i}`} />
               )
             })}
           </CardActions>
         </Card>
-        <Dialog
-          fullScreen={fullScreen}
-          open={this.state.dialogOpened}
-          onClose={this.handleDialogClose}
-          aria-labelledby={`WorkDialog-${work.title}`}>
-          <DialogTitle id={`WorkDialogTitle-${work.title}`}>
-            {work.title}
-            {(fullScreen) ?
-              <IconButton
-                color='inherit'
-                aria-label='Close Dialog'
-                onClick={this.handleDialogClose}
-                className={this.props.classes.closeButton}
-              >
-                <CloseIcon />
-              </IconButton> :
-              ''}
-          </DialogTitle>
-          <DialogContent>
-            <DialogContentText>{work.date}</DialogContentText>
-            <DialogContentText>{work.description}</DialogContentText>
-          </DialogContent>
-          <DialogActions>
-            {work.tags.map((tag) => {
-              return (
-                <Button
-                  size='small'
-                  color='primary'
-                  onClick={this.handelTagClick(tag)}
-                  key={`workDialogTag-${work.title}-${tag}`}>
-                    {tag}
-                </Button>
-              )
-            })}
-          </DialogActions>
-        </Dialog>
+        <WorkDialog
+          work={work}
+          opened={this.state.dialogOpened}
+          onClose={this.handleDialogClose} />
       </Grid>
     );
   }

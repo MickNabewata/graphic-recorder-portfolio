@@ -1,0 +1,14 @@
+・フォント
+
+　　英語
+	全体：Muli_Bold
+		文字間：100くらい
+	細い：Muli_ExtraLight
+
+　　日本語
+	本文：Noto Sans CJK JP ライト
+	タイトル：さわらび明朝
+
+font-family: 'Sawarabi Mincho', sans-serif;
+font-family: 'Noto Sans JP', sans-serif;
+font-family: 'Muli', sans-serif;

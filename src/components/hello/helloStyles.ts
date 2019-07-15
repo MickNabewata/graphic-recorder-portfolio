@@ -15,7 +15,7 @@ const styles = (theme : Theme) =>
       [theme.breakpoints.up('md')] : {
         fontSize : 40
       },
-      fontFamily : 'Montserrat,' + theme.typography.fontFamily,
+      fontFamily : '"Muli Bold", sans-serif',
       color: 'white',
       position: 'absolute',
       bottom: 180,
