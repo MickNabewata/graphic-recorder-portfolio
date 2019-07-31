@@ -5,6 +5,8 @@ import withStyles, { WithStyles } from '@material-ui/core/styles/withStyles';
 import HomeIcon from '@material-ui/icons/HomeOutlined';
 import JobsIcon from '@material-ui/icons/CardTravel';
 import WorksIcon from '@material-ui/icons/FilterNone';
+import ContactIcon from '@material-ui/icons/MailOutline';
+import AboutMeIcon from '@material-ui/icons/PersonOutline';
 import withRoot from '../../withRoot';
 import DrawerLayout, { NavLinks } from '../drawerLayout/drawerLayout';
 import Home from '../home/home';
@@ -44,19 +46,31 @@ class App extends React.Component<Prop, State> {
       {
         text : 'Home',
         url : 'Hello',
-        icon : <HomeIcon />,
+        icon : undefined,
         closeMenuAfterClick : true
       },
       {
         text : 'How',
         url : 'Jobs',
-        icon : <JobsIcon />,
+        icon :undefined,
         closeMenuAfterClick : true
       },
       {
         text : 'Works',
         url : 'Works',
-        icon : <WorksIcon />,
+        icon : undefined,
+        closeMenuAfterClick : true
+      },
+      {
+        text : 'Contact',
+        url : 'Contact',
+        icon : undefined,
+        closeMenuAfterClick : true
+      },
+      {
+        text : 'AboutMe',
+        url : 'AboutMe',
+        icon : undefined,
         closeMenuAfterClick : true
       }
     ]

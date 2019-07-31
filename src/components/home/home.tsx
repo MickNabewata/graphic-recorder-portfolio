@@ -1,10 +1,11 @@
 import React from 'react';
 import styles from './homeStyles';
 import withStyles, { WithStyles } from '@material-ui/core/styles/withStyles';
-import Typography from '@material-ui/core/Typography';
 import Hello from '../hello/hello';
 import Jobs from '../jobs/jobs';
 import Works from '../works/works';
+import Contact from '../contact/contact';
+import AboutMe from '../aboutMe/aboutMe';
 
 /** プロパティ型定義 */
 interface Prop extends WithStyles<typeof styles> {
@@ -34,6 +35,8 @@ class Home extends React.Component<Prop, State> {
           <Hello />
           <Jobs />
           <Works />
+          <Contact />
+          <AboutMe />
         </React.Fragment>
     );
   }

@@ -17,7 +17,7 @@ const styles = (theme : Theme) => {
       },
       height : '10vh',
       fontFamily : '"Muli Bold", sans-serif',
-      borderTop : '8px solid gainsboro',
+      //borderTop : '8px solid gainsboro',
       backgroundColor : 'white'
     },
     head : {

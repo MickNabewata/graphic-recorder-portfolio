@@ -7,6 +7,7 @@ const styles = (theme : Theme) => {
       backgroundColor : 'white',
       borderTop : '8px solid gainsboro'
     },
+    toolbar: theme.mixins.toolbar,
     title : {
       [theme.breakpoints.down('sm')] : {
         fontSize : 30
@@ -22,8 +23,7 @@ const styles = (theme : Theme) => {
       width : '100%',
       display : 'flex',
       [theme.breakpoints.up('md')] : {
-        height : '90vh'
-      }
+        height : `calc(90vh - ${theme.mixins.toolbar.minHeight}px)`      }
     },
     jobGrid : {
       margin : '0 auto',

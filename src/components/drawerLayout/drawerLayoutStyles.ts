@@ -31,7 +31,8 @@ const styles = (theme : Theme) =>
       width: drawerWidth,
       zIndex : -100,
       overflowX : 'hidden',
-      backgroundColor : 'rgba(255, 255, 255, 0.1)'
+      backgroundColor : 'rgba(255, 255, 255, 0)',
+      border: 'none'
     },
     content: {
       flexGrow: 1,
@@ -48,7 +49,8 @@ const styles = (theme : Theme) =>
       '&:hover' : {
         backgroundColor : 'silver'
       },
-      pointerEvents : 'auto'
+      pointerEvents : 'auto',
+      textAlign: 'center'
     },
     link : {
       textDecoration : 'none'

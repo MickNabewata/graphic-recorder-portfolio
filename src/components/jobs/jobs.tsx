@@ -41,6 +41,7 @@ class Jobs extends React.Component<Prop, State> {
 
     return (
       <section className={this.props.classes.root} id='Jobs' >
+        <div className={this.props.classes.toolbar} />
         <Typography component='h2' className={this.props.classes.title}>
           How
         </Typography>
