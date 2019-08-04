@@ -21,8 +21,19 @@ export interface mailData {
     contact: string
 }
 
+exports.test = https.onCall((data : mailData, context : https.CallableContext) => {
+    let ret = {
+        data : data,
+        config : {
+            mail : gmailEmail,
+            pass : gmailPassword
+        }
+    };
+    return JSON.stringify(ret);
+});
+
 /** GMail送信 */
-exports.sendMail = https.onCall((data : any, context : https.CallableContext) => {
+exports.sendMail = https.onCall((data : mailData, context : https.CallableContext) => {
     const email = {
         from: gmailEmail,
         to: to,
