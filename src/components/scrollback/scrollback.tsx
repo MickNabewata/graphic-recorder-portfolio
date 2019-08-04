@@ -1,4 +1,4 @@
-import React, { ReactNode, ReactChildren } from 'react';
+import React from 'react';
 import styles from './scrollbackStyles';
 import withStyles, { WithStyles } from '@material-ui/core/styles/withStyles';
 
@@ -46,11 +46,11 @@ function getCurrentClassName(areas: Prop): string {
       
       areas.breakpoints.forEach((breakpoint, i) => {
         let bk: number = 0;
-        if (breakpoint == 'bottom')
+        if (breakpoint === 'bottom')
         {
           bk = getBottomY();
         }
-        else if (breakpoint == 'this')
+        else if (breakpoint === 'this')
         {
           
         }

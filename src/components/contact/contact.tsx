@@ -1,9 +1,11 @@
 import React from 'react';
+import { functions } from 'firebase';
 import styles from './contactStyles';
 import withStyles, { WithStyles } from '@material-ui/core/styles/withStyles';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import { mailData } from '../../../functions/src/index';
 
 /** プロパティ型定義 */
 interface Prop extends WithStyles<typeof styles> {
@@ -31,16 +33,36 @@ class Contact extends React.Component<Prop, State> {
     let date = new Date(new Date().getFullYear(), targetMonth, new Date().getDay());
     this.state = {
       order : (`例）\r\n内容：春をイメージした新製品の企画会議についてグラレコをお願いしたい\r\n希望時期：${date.getFullYear()}年${date.getMonth()}月\r\n予算：～ 20万`),
-      contact : '例）taro.sample@contoso.co.jp'
+      contact : ''
     };
   }
 
+  /** ご依頼内容入力イベント */
   orderChanged = (event : React.ChangeEvent<HTMLTextAreaElement>) => {
     this.setState({ order : event.target.value });
   };
 
+  /** ご連絡先入力イベント */
   contactChanged = (event : React.ChangeEvent<HTMLTextAreaElement>) => {
     this.setState({ contact : event.target.value });
+  }
+
+  /** メール送信 */
+  sendMail = (event : React.MouseEvent<HTMLElement, MouseEvent>) => {
+    let doRest = functions().httpsCallable('sendMail');
+    let data: mailData = {
+      text: this.state.order,
+      contact: this.state.contact
+    };
+    doRest(data).then(
+      (result) => {
+        //alert('ok');
+      },
+      (err) => {
+        //alert(err);
+        console.log(err);
+      }
+    );
   }
 
   /** レンダリング */
@@ -69,16 +91,22 @@ class Contact extends React.Component<Prop, State> {
               required
               value={this.state.contact}
               label='ご連絡先'
+              placeholder='例）taro.sample@contoso.co.jp'
               onChange={this.contactChanged}
               className={this.props.classes.textField}
               error={!this.state.contact}
               margin='normal'
               variant='outlined'
+              InputLabelProps={{
+                shrink: true,
+              }}
+              helperText='内容確認後、記入頂いたご連絡先宛に返答させて頂きます。'
             />
             <div className={this.props.classes.buttonArea} >
               <Button
                 variant='contained'
                 color='primary'
+                onClick={this.sendMail}
               >
                 送信
               </Button>

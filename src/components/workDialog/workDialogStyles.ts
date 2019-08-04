@@ -53,39 +53,4 @@ const styles = (theme : Theme) => {
   });
 }
 
-const styles2 = (theme : Theme) => {
-
-  return createStyles({
-    dialogTitle : {
-      fontFamily : '"Sawarabi Mincho", sans-serif'
-    },
-    workDialogImage : {
-      [theme.breakpoints.up('md')] : {
-        height : '30vh',
-        minWidth : '550px'
-      },
-      [theme.breakpoints.down('sm')] : {
-        height : '50vh',
-        width : '100%'
-      },
-      color : 'black',
-      backgroundColor : 'white',
-      backgroundPosition : 'center'
-    },
-    closeButton: {
-      position: 'absolute',
-      top: '10px',
-      right: '10px'
-    },
-    date : {
-      fontSize : '1rem',
-      paddingTop : '10px',
-      paddingLeft : '24px'
-    },
-    tagLink : {
-      textDecoration : 'none'
-    },
-  });
-}
-
 export default styles;

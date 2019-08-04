@@ -20,7 +20,6 @@ function theme() : Theme {
       }
     },
     typography: {
-      useNextVariants: true,
       fontFamily:[
         'Muli', '"Sawarabi Mincho"', 'Roboto', 'Helvetica', 'Arial', 'sans-serif'
       ].join(',')

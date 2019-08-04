@@ -57,7 +57,7 @@ class JobCard extends React.Component<Prop, State> {
         <Paper elevation={0} className={this.props.classes.jobPaper} >
           <section>
             <Typography component='h3' className={this.props.classes.jobTitle}>
-              <Link to={`${location.pathname}?tag=${this.props.job.title}`} >
+              <Link to={`${window.location.pathname}?tag=${this.props.job.title}`} >
                 <IconButton
                   color='inherit'
                   aria-label='Slider'

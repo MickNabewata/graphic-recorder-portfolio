@@ -40,10 +40,10 @@ interface Prop extends WithStyles<typeof styles> {
 
 /** ステート型定義 */
 type State = {
-  /** Drawerの開閉状態(モバイル表示で利用) */
-  mobileOpen: boolean,
-  /** ナビゲーション外クリックで強制的に閉じられたか否か */
-  clickAwayed: boolean
+  /** Drawerの開閉状態 */
+  drawerOpen: boolean,
+  /** Drawerメニューがクリックされた直後か否か */
+  drawerClicked: boolean
 };
 
 /** コンポーネント定義 */
@@ -56,8 +56,8 @@ class DrawerLayout extends React.Component<Prop, State> {
 
     // ステート初期化
     this.state = {
-      mobileOpen: false,
-      clickAwayed: false
+      drawerOpen: false,
+      drawerClicked: false
     };
 
     // スクロールPolyfill
@@ -66,11 +66,16 @@ class DrawerLayout extends React.Component<Prop, State> {
 
   /** Drawerの開閉 */
   handleDrawerToggle = () => {
-    if (this.state.clickAwayed == true) {
-      this.setState({ mobileOpen: false, clickAwayed: false });
+    this.setState(state => ({ drawerOpen: !state.drawerOpen, drawerClicked: true }));
+  };
+
+  /** Drawerのクリックアウェイ */
+  handleClickAway = () => {
+    if (this.state.drawerClicked === true) {
+      this.setState({ drawerClicked: false });
     }
     else {
-      this.setState(state => ({ mobileOpen: !state.mobileOpen }));
+      this.setState({ drawerOpen: false });
     }
   };
 
@@ -84,18 +89,8 @@ class DrawerLayout extends React.Component<Prop, State> {
       }
 
       // メニューを閉じる
-      if(link.closeMenuAfterClick) this.setState({ mobileOpen: false });
+      if(link.closeMenuAfterClick) this.setState({ drawerOpen: false });
     };
-  };
-
-  /** Drawerのクローズ */
-  handleDrawerClose = () => {
-    if (this.state.mobileOpen == true) {
-      this.setState({ mobileOpen: false, clickAwayed: true });
-      setTimeout(() => {
-        this.setState({ clickAwayed: false });
-      }, 10);
-    }
   };
 
   /** Drawer内のメニューを生成 */
@@ -192,12 +187,12 @@ class DrawerLayout extends React.Component<Prop, State> {
               </Typography>
             </ScrollBack>
           </Toolbar>
-          <ClickAwayListener onClickAway={this.handleDrawerClose}>
+          <ClickAwayListener onClickAway={this.handleClickAway}>
             <nav>
               <Drawer
                 variant='persistent'
                 anchor='left'
-                open={this.state.mobileOpen}
+                open={this.state.drawerOpen}
                 onClose={this.handleDrawerToggle}
                 classes={{
                   paper: this.props.classes.drawerPaper,

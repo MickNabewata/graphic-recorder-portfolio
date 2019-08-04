@@ -3,8 +3,6 @@ import styles from './aboutMeStyles';
 import withStyles, { WithStyles } from '@material-ui/core/styles/withStyles';
 import { Theme } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
 
 /** プロパティ型定義 */
 interface Prop extends WithStyles<typeof styles> {
@@ -43,6 +41,7 @@ class AboutMe extends React.Component<Prop, State> {
         <div className={this.props.classes.imageArea}>
           <img 
             src='https://firebasestorage.googleapis.com/v0/b/graphicrecorderportfolio.appspot.com/o/AboutMe.png?alt=media&token=8212fdbd-2d6f-4a63-bc03-1a1873e085d2'
+            alt='aboutMe'
             className={this.props.classes.image} />
         </div>
         <div className={this.props.classes.textArea}>

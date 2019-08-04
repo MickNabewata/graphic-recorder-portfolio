@@ -112,7 +112,7 @@ class WorkCard extends React.Component<Prop, State> {
               return (
                 (tag)?
                   <Link
-                    to={`${location.pathname}?tag=${tag}`}
+                    to={`${window.location.pathname}?tag=${tag}`}
                     className={this.props.classes.tagLink}
                     key={`work-${work.title}-tag-${i}`}>
                     <Button

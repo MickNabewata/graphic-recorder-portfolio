@@ -46,7 +46,7 @@ class Jobs extends React.Component<Prop, State> {
           How
         </Typography>
         <div className={this.props.classes.jobContents}>
-          <Grid container spacing={16} className={this.props.classes.jobGrid} justify='center' alignItems='center' >
+          <Grid container spacing={2} className={this.props.classes.jobGrid} justify='center' alignItems='center' >
             <Grid item xs={12} md={1} className={this.props.classes.jobGridSlider}>
               <IconButton
                 color='inherit'

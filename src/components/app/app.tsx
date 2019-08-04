@@ -2,11 +2,6 @@ import React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import styles from './appStyles';
 import withStyles, { WithStyles } from '@material-ui/core/styles/withStyles';
-import HomeIcon from '@material-ui/icons/HomeOutlined';
-import JobsIcon from '@material-ui/icons/CardTravel';
-import WorksIcon from '@material-ui/icons/FilterNone';
-import ContactIcon from '@material-ui/icons/MailOutline';
-import AboutMeIcon from '@material-ui/icons/PersonOutline';
 import withRoot from '../../withRoot';
 import DrawerLayout, { NavLinks } from '../drawerLayout/drawerLayout';
 import Home from '../home/home';
@@ -31,7 +26,7 @@ class App extends React.Component<Prop, State> {
 
     // ステート初期化
     this.state = {
-      currentPath : location.pathname
+      currentPath : window.location.pathname
     };
   }
 

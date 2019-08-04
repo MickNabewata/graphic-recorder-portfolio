@@ -48,7 +48,7 @@ class Works extends React.Component<Prop, State> {
         for (let i = 0; i < filters.length; i++)
         {
           // タグを含まないものは除外
-          if(v.tags.includes(filters[i]) == false)
+          if(v.tags.includes(filters[i]) === false)
           {
             isMutch = false;
             break;
@@ -76,7 +76,7 @@ class Works extends React.Component<Prop, State> {
               <span className={this.props.classes.filterArea}>
                 {` - ${filters.join(',')} - `}
                 <Link
-                  to={`${location.pathname}`}
+                  to={`${window.location.pathname}`}
                   className={this.props.classes.filter}>
                   <Button
                     variant="contained"
@@ -117,7 +117,7 @@ class Works extends React.Component<Prop, State> {
         </div>
         <div>
           {(works.length > 0)?
-            <Grid container spacing={40} className={this.props.classes.workGrid} justify='center' alignItems='center' >
+            <Grid container spacing={2} className={this.props.classes.workGrid} justify='center' alignItems='center' >
               { works.map((work) => {
                 return <WorkCard work={work} key={`workCard-${work.title}`} />
               }) }

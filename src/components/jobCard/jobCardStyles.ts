@@ -4,7 +4,7 @@ import createStyles from '@material-ui/core/styles/createStyles';
 const styles = (theme : Theme) => {
   return createStyles({
     jobPaper : {
-      padding : theme.spacing.unit
+      padding : 4
     },
     jobTitle : {
       [theme.breakpoints.down('sm')] : {

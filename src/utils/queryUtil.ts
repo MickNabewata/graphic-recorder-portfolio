@@ -60,7 +60,7 @@ export default class QueryUtil {
                 let p : string[] = this.params[key];
                 if(p)
                 {
-                    this.params[key] = p.filter(n => n != value);
+                    this.params[key] = p.filter(n => n !== value);
                 }
             }
             else

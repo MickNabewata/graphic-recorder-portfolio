@@ -1,5 +1,6 @@
 {
   "projects": {
-    "graphicrecorderportfolio": "graphicrecorderportfolio"
+    "graphicrecorderportfolio": "graphicrecorderportfolio",
+    "default": "graphicrecorderportfolio"
   }
 }

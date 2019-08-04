@@ -56,7 +56,7 @@ class WorkDialog extends React.Component<Prop, State> {
     return (
       <div className={this.props.classes.workDialogPaper} >
         <div className={this.props.classes.workDialogImageArea}>
-          <img src={work.thumbnailUrl} className={this.props.classes.workDialogImage} />
+          <img src={work.thumbnailUrl} alt={work.title} className={this.props.classes.workDialogImage} />
         </div>
         <div className={this.props.classes.workDialogContents}>
           <DialogTitle className={this.props.classes.workDialogTitle}>{work.title}</DialogTitle>
@@ -72,7 +72,7 @@ class WorkDialog extends React.Component<Prop, State> {
                 return (
                   (tag)?
                     <Link
-                      to={`${location.pathname}?tag=${tag}`}
+                      to={`${window.location.pathname}?tag=${tag}`}
                       className={this.props.classes.tagLink}
                       key={`work-${work.title}-tag-${i}`}>
                       <Button
@@ -109,7 +109,7 @@ class WorkDialog extends React.Component<Prop, State> {
           </IconButton>
         </DialogTitle>
         <div className={this.props.classes.workDialogImageArea}>
-          <img src={work.thumbnailUrl} className={this.props.classes.workDialogImage} />
+          <img src={work.thumbnailUrl} alt={work.title} className={this.props.classes.workDialogImage} />
         </div>
         <DialogContent>
           <DialogContentText>{work.date}</DialogContentText>
@@ -121,7 +121,7 @@ class WorkDialog extends React.Component<Prop, State> {
               return (
                 (tag)?
                   <Link
-                    to={`${location.pathname}?tag=${tag}`}
+                    to={`${window.location.pathname}?tag=${tag}`}
                     className={this.props.classes.tagLink}
                     key={`work-${work.title}-tag-${i}`}>
                     <Button
