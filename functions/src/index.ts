@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase-admin';
-import { https, config } from 'firebase-functions';
+import { config, firestore } from 'firebase-functions';
 import { createTransport } from 'nodemailer';
 
 const gmailEmail = config().gmail.email;
@@ -21,34 +21,36 @@ export interface mailData {
     contact: string
 }
 
-exports.test = https.onCall((data : mailData, context : https.CallableContext) => {
-    let ret = {
-        data : data,
-        config : {
-            mail : gmailEmail,
-            pass : gmailPassword
-        }
-    };
-    return JSON.stringify(ret);
-});
-
 /** GMail送信 */
-exports.sendMail = https.onCall((data : mailData, context : https.CallableContext) => {
-    const email = {
-        from: gmailEmail,
-        to: to,
-        subject: `ポートフォリオサイトからの問い合わせ`,
-        text: `ポートフォリオサイトから問い合わせがありました。\r\n\r\n--------\r\n${data.text}--------\r\n連絡先：${data.contact}`
-    };
-    mailTransport.sendMail(email, (err, info) => {
-        if (err) {
-            console.log(err);
-        }
-        else
-        {
-            console.log('success');
-        }
-    });
+exports.sendMail = firestore.document('/contacts/{contact}').onCreate((snapshot, context)=> {
+    console.log('開始します');
+    const data = snapshot.data() as mailData;
+    if (data) {
+        const email = {
+            from: gmailEmail,
+            to: to,
+            subject: `ポートフォリオサイトからの問い合わせ`,
+            text: `ポートフォリオサイトから問い合わせがありました。\r\n\r\n-------------\r\n${data.text}\r\n\r\n連絡先：${data.contact}\r\n-------------`
+        };
+        console.log(email);
+        console.log(config().gmail);
+        
+        return new Promise((resolve: (value?: any) => void, reject: (reason?: any) => void) => {
+            mailTransport.sendMail(email, (err, info) => {
+                if (err) {
+                    console.log('失敗');
+                    console.log(err);
+                }
+                else {
+                    console.log('成功');
+                }
+            });
+        });
+    }
+    else {
+        console.log('データがNULLです');
+        return undefined;
+    }
 });
 
 initializeApp();
