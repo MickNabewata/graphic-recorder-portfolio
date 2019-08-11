@@ -21,7 +21,7 @@ export interface mailData {
     contact: string
 }
 
-exports.test = https.onCall((data : mailData, context : https.CallableContext) => {
+exports.test = https.onCall((data : any, context : https.CallableContext) => {
     let ret = {
         data : data,
         config : {

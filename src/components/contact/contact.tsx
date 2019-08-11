@@ -6,6 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { mailData } from '../../../functions/src/index';
+import { createTransport } from 'nodemailer';
 
 /** プロパティ型定義 */
 interface Prop extends WithStyles<typeof styles> {
@@ -56,11 +57,10 @@ class Contact extends React.Component<Prop, State> {
     };
     doRest(data).then(
       (result) => {
-        //alert('ok');
+        console.log(JSON.stringify(data));
       },
       (err) => {
-        //alert(err);
-        console.log(err);
+        console.log(JSON.stringify(err));
       }
     );
   }
