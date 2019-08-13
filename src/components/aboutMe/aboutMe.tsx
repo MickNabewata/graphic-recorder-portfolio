@@ -3,6 +3,7 @@ import styles from './aboutMeStyles';
 import withStyles, { WithStyles } from '@material-ui/core/styles/withStyles';
 import { Theme } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
+import { Hidden } from '@material-ui/core';
 
 /** プロパティ型定義 */
 interface Prop extends WithStyles<typeof styles> {
@@ -67,7 +68,33 @@ class AboutMe extends React.Component<Prop, State> {
 
   /** フルスクリーンで描画 */
   renderFullScreen() {
-    return <div />;
+    return (
+      <React.Fragment>
+        <div className={this.props.classes.imageArea}>
+          <img
+            src='https://firebasestorage.googleapis.com/v0/b/graphicrecorderportfolio.appspot.com/o/AboutMe.png?alt=media&token=8212fdbd-2d6f-4a63-bc03-1a1873e085d2'
+            alt='aboutMe'
+            className={this.props.classes.image} />
+        </div>
+        <div className={this.props.classes.textArea}>
+          <div className={this.props.classes.textAreaContainer}>
+            <Typography component='h3' className={this.props.classes.name} gutterBottom>
+              永井 結子
+              <span className={this.props.classes.nameRubi}>Nagai Yuiko</span>
+            </Typography>
+            <Typography component='p' className={this.props.classes.description}>
+              説明が入ります
+            </Typography>
+            <Typography component='p' className={this.props.classes.description}>
+              説明が入ります
+            </Typography>
+            <Typography component='p' className={this.props.classes.description}>
+              説明が入ります
+            </Typography>
+          </div>
+        </div>
+      </React.Fragment>
+    );
   }
 
   /** レンダリング */
@@ -83,7 +110,12 @@ class AboutMe extends React.Component<Prop, State> {
         </Typography>
         <div className={this.props.classes.content}>
           <div className={this.props.classes.container}>
-            {(fullScreen)? this.renderFullScreen() : this.renderWideScreen()}
+            <Hidden mdUp={false} smDown={true} >
+              {this.renderWideScreen()}
+            </Hidden>
+            <Hidden mdUp={true} smDown={false} >
+              {this.renderFullScreen()}
+            </Hidden>
           </div>
         </div>
       </section>

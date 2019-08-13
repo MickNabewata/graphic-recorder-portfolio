@@ -53,7 +53,7 @@ class JobCard extends React.Component<Prop, State> {
   /** レンダリング */
   render() {
     return (
-      <Grid item xs={12} md={3} key={`JobPaper-${this.props.job.title}`} >
+      <Grid item xs={12} md={4} key={`JobPaper-${this.props.job.title}`} >
         <Paper elevation={0} className={this.props.classes.jobPaper} >
           <section>
             <Typography component='h3' className={this.props.classes.jobTitle}>

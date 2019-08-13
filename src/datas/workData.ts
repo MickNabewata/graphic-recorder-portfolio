@@ -10,7 +10,7 @@ export interface IWork {
     description : string[];
 
     /** サムネイル画像URL */
-    thumbnailUrl : string;
+    thumbnailUrl : string[];
 
     /** タグ */
     tags : string[];
@@ -21,26 +21,47 @@ export default class WorkData {
 
     /** ジョブデータ取得 */
     get() : IWork[] {
-        let ret : IWork[] = [
+        let ret: IWork[] = [
+            {
+                title: '画像がたくさん',
+                date: '2019年6月',
+                description: ['ゴリラです。', 'ゴジラです。', 'ゴリラです。'],
+                thumbnailUrl: [
+                    'https://2.bp.blogspot.com/-KK0qDJEicKI/UMluuXl6NJI/AAAAAAAABuE/E4k6X69EX-s/s1600/Silverback+Gorilla+Wildlife.jpg',
+                    'https://firebasestorage.googleapis.com/v0/b/graphicrecorderportfolio.appspot.com/o/catSmall.jpg?alt=media&token=dac25bec-7207-4a59-bedb-3d6b5cb719cd',
+                    'https://firebasestorage.googleapis.com/v0/b/graphicrecorderportfolio.appspot.com/o/catBig2.jpg?alt=media&token=17aff910-222f-4080-96c1-dc85c90fa8b8'
+                ],
+                tags: ['ゴリラ', 'ゴジラ', '', 'グラフィックレコーダー', 'つよつよつよつよつよつよつよつよつよつよつよつよつよつよつよつよつよつよつよつよつよつよつよつよ', 'Sample1', 'Sample2', 'Sample3', 'Sample4', 'Sample5', 'Sample6', 'Sample7', 'Sample8']
+            },
+            {
+                title: '画像が無い',
+                date: '2019年6月',
+                description: ['ゴリラです。', 'ゴジラです。', 'ゴリラです。', 'ゴジラは強いです。ゴジラは強いです。ゴジラは強いです。ゴジラは強いです。ゴジラは強いです。ゴジラは強いです。ゴジラは強いです。ゴジラは強いです。ゴジラは強いです。ゴジラは強いです。ゴジラは強いです。ゴジラは強いです。ゴジラは強いです。ゴジラは強いです。ゴジラは強いです。ゴジラは強いです。ゴジラは強いです。ゴジラは強いです。ゴジラは強いです。ゴジラは強いです。ゴジラは強いです。ゴジラは強いです。ゴジラは強いです。ゴジラは強いです。ゴジラは強いです。ゴジラは強いです。ゴジラは強いです。ゴジラは強いです。ゴジラは強いです。ゴジラは強いです。ゴジラは強いです。ゴジラは強いです。ゴジラは強いです。ゴジラは強いです。ゴジラは強いです。ゴジラは強いです。ゴジラは強いです。ゴジラは強いです。ゴジラは強いです。'],
+                thumbnailUrl: [],
+                tags: ['ゴリラ', 'ゴジラ', '', 'グラフィックレコーダー', 'つよつよつよつよつよつよつよつよつよつよつよつよつよつよつよつよつよつよつよつよつよつよつよつよ', 'Sample1', 'Sample2', 'Sample3', 'Sample4', 'Sample5', 'Sample6', 'Sample7', 'Sample8']
+            },
             {
                 title : '新製品企画会議',
                 date : '2019年6月',
                 description : [ 'ゴリラです。', 'ゴジラです。', 'ゴリラです。', 'ゴジラは強いです。ゴジラは強いです。ゴジラは強いです。ゴジラは強いです。ゴジラは強いです。ゴジラは強いです。ゴジラは強いです。ゴジラは強いです。ゴジラは強いです。ゴジラは強いです。ゴジラは強いです。ゴジラは強いです。ゴジラは強いです。ゴジラは強いです。ゴジラは強いです。ゴジラは強いです。ゴジラは強いです。ゴジラは強いです。ゴジラは強いです。ゴジラは強いです。ゴジラは強いです。ゴジラは強いです。ゴジラは強いです。ゴジラは強いです。ゴジラは強いです。ゴジラは強いです。ゴジラは強いです。ゴジラは強いです。ゴジラは強いです。ゴジラは強いです。ゴジラは強いです。ゴジラは強いです。ゴジラは強いです。ゴジラは強いです。ゴジラは強いです。ゴジラは強いです。ゴジラは強いです。ゴジラは強いです。ゴジラは強いです。' ],
-                thumbnailUrl : 'https://2.bp.blogspot.com/-KK0qDJEicKI/UMluuXl6NJI/AAAAAAAABuE/E4k6X69EX-s/s1600/Silverback+Gorilla+Wildlife.jpg',
+                thumbnailUrl: [
+                    'https://2.bp.blogspot.com/-KK0qDJEicKI/UMluuXl6NJI/AAAAAAAABuE/E4k6X69EX-s/s1600/Silverback+Gorilla+Wildlife.jpg',
+                    'https://firebasestorage.googleapis.com/v0/b/graphicrecorderportfolio.appspot.com/o/catBig2.jpg?alt=media&token=17aff910-222f-4080-96c1-dc85c90fa8b8'
+                ],
                 tags : [ 'ゴリラ', 'ゴジラ', '', 'グラフィックレコーダー', 'つよつよつよつよつよつよつよつよつよつよつよつよつよつよつよつよつよつよつよつよつよつよつよつよ', 'Sample1', 'Sample2', 'Sample3', 'Sample4', 'Sample5', 'Sample6', 'Sample7', 'Sample8' ]
             },
             {
                 title : 'ライブイベントTシャツプリント柄デザイン',
                 date : '2019年5月',
                 description : [ 'ゴリラです。ゴリラです。ゴリラです。ゴリラです。ゴリラです。ゴリラです。ゴリラです。ゴリラです。ゴリラです。' ],
-                thumbnailUrl : 'https://2.bp.blogspot.com/-KK0qDJEicKI/UMluuXl6NJI/AAAAAAAABuE/E4k6X69EX-s/s1600/Silverback+Gorilla+Wildlife.jpg',
+                thumbnailUrl: ['https://2.bp.blogspot.com/-KK0qDJEicKI/UMluuXl6NJI/AAAAAAAABuE/E4k6X69EX-s/s1600/Silverback+Gorilla+Wildlife.jpg' ],
                 tags : [ 'ゴリラ', '', '', 'イラストレーター' ]
             },
             {
                 title : 'イベントポスターデザイン',
                 date : '2019年4月',
                 description : [ '' ],
-                thumbnailUrl : 'https://2.bp.blogspot.com/-KK0qDJEicKI/UMluuXl6NJI/AAAAAAAABuE/E4k6X69EX-s/s1600/Silverback+Gorilla+Wildlife.jpg',
+                thumbnailUrl: ['https://2.bp.blogspot.com/-KK0qDJEicKI/UMluuXl6NJI/AAAAAAAABuE/E4k6X69EX-s/s1600/Silverback+Gorilla+Wildlife.jpg' ],
                 tags : [ '' ]
             }
         ];
@@ -52,7 +73,7 @@ export default class WorkData {
                     title : `Sample${i}`,
                     date : '2018年1月 ～ 2018年12月',
                     description : [ 'サンプルです' ],
-                    thumbnailUrl : 'https://firebasestorage.googleapis.com/v0/b/graphicrecorderportfolio.appspot.com/o/catSmall.jpg?alt=media&token=dac25bec-7207-4a59-bedb-3d6b5cb719cd',
+                    thumbnailUrl: ['https://firebasestorage.googleapis.com/v0/b/graphicrecorderportfolio.appspot.com/o/catSmall.jpg?alt=media&token=dac25bec-7207-4a59-bedb-3d6b5cb719cd'],
                     tags : [ 'Sample1', `Sample${i + 3}` ]
                 }
             );
@@ -65,7 +86,7 @@ export default class WorkData {
                     title : `Sample${i}`,
                     date : '2018年1月 ～ 2018年12月',
                     description : [ 'サンプルです' ],
-                    thumbnailUrl : 'https://firebasestorage.googleapis.com/v0/b/graphicrecorderportfolio.appspot.com/o/catBig.jpg?alt=media&token=f12d00f6-7f33-4f03-b7eb-619377a48498',
+                    thumbnailUrl : ['https://firebasestorage.googleapis.com/v0/b/graphicrecorderportfolio.appspot.com/o/catBig.jpg?alt=media&token=f12d00f6-7f33-4f03-b7eb-619377a48498'],
                     tags : [ 'Sample1', `Sample${i + 3}` ]
                 }
             );
@@ -78,7 +99,7 @@ export default class WorkData {
                     title : `Sample${i}`,
                     date : '2018年1月 ～ 2018年12月',
                     description : [ 'サンプルです' ],
-                    thumbnailUrl : 'https://firebasestorage.googleapis.com/v0/b/graphicrecorderportfolio.appspot.com/o/catBig2.jpg?alt=media&token=17aff910-222f-4080-96c1-dc85c90fa8b8',
+                    thumbnailUrl : ['https://firebasestorage.googleapis.com/v0/b/graphicrecorderportfolio.appspot.com/o/catBig2.jpg?alt=media&token=17aff910-222f-4080-96c1-dc85c90fa8b8'],
                     tags : [ 'Sample1', `Sample${i + 3}` ]
                 }
             );

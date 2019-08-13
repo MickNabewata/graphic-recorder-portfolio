@@ -85,7 +85,7 @@ class WorkCard extends React.Component<Prop, State> {
             onMouseOver={this.cardMouseOver(`cardContent-${work.title}`)}
             onMouseOut={this.cardMouseOut(`cardContent-${work.title}`)} >
             <CardMedia
-              image={work.thumbnailUrl}
+              image={(work.thumbnailUrl && work.thumbnailUrl.length > 0) ? work.thumbnailUrl[0] : '/NoImage.jpg'}
               className={this.props.classes.workThumbnail} />
             <CardContent id={`cardContent-${work.title}`} className={`${this.props.classes.workContent} ${this.props.classes.disable}`}>
               <section>

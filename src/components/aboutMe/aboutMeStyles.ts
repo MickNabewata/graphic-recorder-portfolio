@@ -4,8 +4,13 @@ import createStyles from '@material-ui/core/styles/createStyles';
 const styles = (theme : Theme) => 
   createStyles({
     root: {
+      [theme.breakpoints.up('md')]: {
+        minHeight: 'calc(100vh - 14px)'
+      },
+      [theme.breakpoints.down('sm')]: {
+        minHeight: '100vh'
+      },
       backgroundColor : 'white',
-      minHeight : 'calc(100vh - 14px)',
       borderTop : '8px solid gainsboro',
     },
     toolbar: theme.mixins.toolbar,
@@ -52,24 +57,30 @@ const styles = (theme : Theme) =>
       right : 0
     },
     imageArea : {
-      display : 'inline-flex',
-      width : '50%',
-      height : '100%'
+      [theme.breakpoints.up('md')]: {
+        display: 'inline-flex',
+        width: '50%',
+        height: '100%'
+      }
     },
     image : {
       width : '100%',
       height : '100%'
     },
     textArea : {
-      display : 'inline-flex',
-      width : '50%',
-      height : '100%',
-      position : 'relative',
-      paddingLeft : '30px',
-      textAlign : 'left'
+      [theme.breakpoints.up('md')]: {
+        display: 'inline-flex',
+        width: '50%',
+        height: '100%',
+        position: 'relative',
+        paddingLeft: '30px',
+        textAlign: 'left'
+      }
     },
     textAreaContainer : {
-      position : 'absolute'
+      [theme.breakpoints.up('md')]: {
+        position: 'absolute'
+      }
     },
     name : {
       [theme.breakpoints.up('md')]: {

@@ -5,9 +5,6 @@ import Typography from '@material-ui/core/Typography';
 import JobData, { IJob } from '../../datas/jobData';
 import JobCard from '../jobCard/jobCard';
 import Grid from '@material-ui/core/Grid';
-import IconButton from '@material-ui/core/IconButton';
-import Left from '@material-ui/icons/ChevronLeft';
-import Right from '@material-ui/icons/ChevronRight';
 
 /** プロパティ型定義 */
 interface Prop extends WithStyles<typeof styles> {
@@ -47,25 +44,9 @@ class Jobs extends React.Component<Prop, State> {
         </Typography>
         <div className={this.props.classes.jobContents}>
           <Grid container spacing={2} className={this.props.classes.jobGrid} justify='center' alignItems='center' >
-            <Grid item xs={12} md={1} className={this.props.classes.jobGridSlider}>
-              <IconButton
-                color='inherit'
-                aria-label='Slider'
-              >
-                <Left className={this.props.classes.slideIcon} />
-              </IconButton>
-            </Grid>
-            { jobs.map((job : IJob) => {
+            {jobs.map((job: IJob) => {
               return <JobCard job={job} key={`jobCard-${job.title}`} />;
-            }) }
-            <Grid item xs={12} md={1} className={this.props.classes.jobGridSlider}>
-              <IconButton
-                color='inherit'
-                aria-label='Slider'
-              >
-                <Right className={this.props.classes.slideIcon} />
-              </IconButton>
-            </Grid>
+            })}
           </Grid>
         </div>
       </section>

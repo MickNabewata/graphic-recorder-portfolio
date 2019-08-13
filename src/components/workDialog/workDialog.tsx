@@ -12,6 +12,8 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import { IconButton } from '@material-ui/core';
 import CloseIcon from '@material-ui/icons/Close';
+import Slide from '@material-ui/core/Slide';
+import Radio from '@material-ui/core/Radio';
 
 /** プロパティ型定義 */
 interface Prop extends WithStyles<typeof styles> {
@@ -31,6 +33,8 @@ interface Prop extends WithStyles<typeof styles> {
 
 /** ステート型定義 */
 type State = {
+  /** 現在表示中の画像URL */
+  imageSrc: string
 };
 
 /** コンポーネント定義 */
@@ -42,7 +46,9 @@ class WorkDialog extends React.Component<Prop, State> {
     super(props);
 
     // ステート初期化
+    const firstImageSrc = (props.work.thumbnailUrl && props.work.thumbnailUrl.length > 0) ? props.work.thumbnailUrl[0] : '/NoImage.jpg';
     this.state = {
+      imageSrc: firstImageSrc
     };
   }
 
@@ -51,13 +57,63 @@ class WorkDialog extends React.Component<Prop, State> {
     if(this.props.onClose) this.props.onClose();
   }
 
+  /** 次の画像へスライド */
+  slide = (imageSrc: string) => () => { 
+    this.setState({ imageSrc: imageSrc });
+  }
+
+  /** サムネイル画像描画 */
+  renderThumbnail(work: IWork) {
+    return (
+      <div className={this.props.classes.workDialogImageArea}>
+        {
+          (work.thumbnailUrl && work.thumbnailUrl.length > 0) ?
+            (work.thumbnailUrl.length > 1) ?
+              <React.Fragment>
+                {
+                  work.thumbnailUrl.map((thumbnailUrl, i) => {
+                    return (
+                      <Slide
+                        timeout={(thumbnailUrl === this.state.imageSrc)? 0 : 1000}
+                        direction={'left'}
+                        in={(thumbnailUrl === this.state.imageSrc)}
+                        style={{ zIndex: (thumbnailUrl === this.state.imageSrc)? 0 : 100 }}
+                        key={`workDialogImageSlide-${work.title}-${i}`}>
+                        <img src={thumbnailUrl} alt={work.title} className={this.props.classes.workDialogImage} />
+                      </Slide>
+                    );
+                  })
+                }
+                <div className={this.props.classes.imageSlider}>
+                  {
+                    work.thumbnailUrl.map((thumbnailUrl, i) => {
+                      return (
+                        <Radio
+                          name={this.props.classes.imageSliderButton}
+                          color='default'
+                          className={this.props.classes.imageSliderButton}
+                          value={thumbnailUrl}
+                          onChange={this.slide(thumbnailUrl)}
+                          checked={(thumbnailUrl === this.state.imageSrc)}
+                          key={`${this.props.classes.imageSliderButton}-${i}`}
+                        />
+                      );
+                    })
+                  }
+                </div>
+              </React.Fragment>:
+              <img src={work.thumbnailUrl[0]} alt={work.title} className={this.props.classes.workDialogImage} /> :
+            <img src='/NoImage.jpg' alt={work.title} className={this.props.classes.workDialogImage} />
+        }
+      </div>
+    );
+  }
+
   /** 画面幅に従い描画 */
-  renderWideScreen(work : IWork) {
+  renderWideScreen(work: IWork) {
     return (
       <div className={this.props.classes.workDialogPaper} >
-        <div className={this.props.classes.workDialogImageArea}>
-          <img src={work.thumbnailUrl} alt={work.title} className={this.props.classes.workDialogImage} />
-        </div>
+        {this.renderThumbnail(work)}
         <div className={this.props.classes.workDialogContents}>
           <DialogTitle className={this.props.classes.workDialogTitle}>{work.title}</DialogTitle>
           <DialogContent>
@@ -108,8 +164,8 @@ class WorkDialog extends React.Component<Prop, State> {
             <CloseIcon />
           </IconButton>
         </DialogTitle>
-        <div className={this.props.classes.workDialogImageArea}>
-          <img src={work.thumbnailUrl} alt={work.title} className={this.props.classes.workDialogImage} />
+        <div className={this.props.classes.workDialogMobileImageArea}>
+          {this.renderThumbnail(work)}
         </div>
         <DialogContent>
           <DialogContentText>{work.date}</DialogContentText>
@@ -157,62 +213,6 @@ class WorkDialog extends React.Component<Prop, State> {
       </Dialog>
     );
   }
-
-  /** レンダリング */
-  /*
-  render() {
-    let work = this.props.work;
-    let fullScreen = (this.props.theme.breakpoints.values.sm >= window.innerWidth);
-
-    return (
-      <Dialog
-        fullScreen={fullScreen}
-        open={this.props.opened}
-        onClose={this.props.onClose}
-        aria-labelledby={`WorkDialog-${work.title}`}>
-        <DialogTitle id={`WorkDialogTitle-${work.title}`}>
-          <span className={this.props.classes.dialogTitle}>{work.title}</span>
-          {(fullScreen) ?
-            <IconButton
-              color='inherit'
-              aria-label='Close Dialog'
-              onClick={this.props.onClose}
-              className={this.props.classes.closeButton}
-            >
-              <CloseIcon />
-            </IconButton> :
-            ''}
-        </DialogTitle>
-        <div className={this.props.classes.workDialogImage} style={{ backgroundImage : `url("${work.thumbnailUrl}")` }} />
-        <Typography component='p' gutterBottom className={this.props.classes.date}>{work.date}</Typography>
-        <DialogContent>
-          <DialogContentText>{work.description}</DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <div>
-            {work.tags.map((tag, i) => {
-              return (
-                (tag)?
-                  <Link
-                    to={`${location.pathname}?tag=${tag}`}
-                    className={this.props.classes.tagLink}
-                    key={`work-${work.title}-tag-${i}`}>
-                    <Button
-                      size='small'
-                      color='primary'
-                      onClick={this.handleDialogClose}
-                      key={`workDialogTag-${work.title}-${i}`}>
-                      {tag}
-                    </Button>
-                  </Link>:
-                  <React.Fragment key={`work-frag-${work.title}-tag-${i}`} />
-              )
-            })}
-          </div>
-        </DialogActions>
-      </Dialog>
-    );
-  }*/
 }
 
 /** テーマとスタイルをプロパティに含めて返却 */

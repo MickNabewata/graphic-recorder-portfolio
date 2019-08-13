@@ -20,10 +20,8 @@ const styles = (theme : Theme) => {
     },
     jobContents : {
       margin : '0 auto',
-      width : '100%',
-      display : 'flex',
-      [theme.breakpoints.up('md')] : {
-        height : `calc(90vh - ${theme.mixins.toolbar.minHeight}px)`      }
+      width : '80%',
+      display : 'flex'
     },
     jobGrid : {
       margin : '0 auto',
@@ -32,7 +30,8 @@ const styles = (theme : Theme) => {
     jobGridSlider : {
       [theme.breakpoints.down('sm')] : {
         display : 'none'
-      }
+      },
+      display: 'none'
     },
     jobGridBody : {
       margin : '0 auto'
