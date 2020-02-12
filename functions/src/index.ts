@@ -11,7 +11,7 @@ const mailTransport = createTransport({
         pass: gmailPassword
     }
 });
-const to = 'aquarius.mikito.0123@gmail.com';
+const to = 'contact@yuikonagai.com';
 
 /** メール送信内容 */
 export interface mailData {
