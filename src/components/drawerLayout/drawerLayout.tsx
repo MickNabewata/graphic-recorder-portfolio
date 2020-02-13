@@ -183,7 +183,7 @@ class DrawerLayout extends React.Component<Prop, State> {
             {/* タイトル文言 */}
             <ScrollBack classNames={[this.props.classes.white, this.props.classes.translate]} breakpoints={[winHeight]}>
               <Typography component='h1' color='inherit' className={this.props.classes.title} noWrap>
-                Yuiko's Portfolio
+                Yuiko Nagai
               </Typography>
             </ScrollBack>
           </Toolbar>
